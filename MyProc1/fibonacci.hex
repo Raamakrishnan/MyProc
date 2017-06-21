@@ -1,0 +1,18 @@
+//fibonacci series - first ten terms - available from address 100
+10 00 00 00		//load 0 to r0
+10 10 00 01		//load 1 to r1 - first term of the series
+10 20 00 01		//load 2 to r2 - second term of the series
+10 30 00 64		//r3 - address pointer to [100]
+16 13 00 00		//series output from [100] - writing first term
+0C 33 00 01		//increment pointer r3++
+16 23 00 00 	//writing second term
+0C 33 00 01		//increment pointer r3++
+10 50 00 07		//loop count 7 in r5
+01 41 20 00		//r4 = r1 + r2 - loop back here
+16 43 00 00 	//writing next term
+0C 33 00 01		//increment pointer r3++
+22 12 00 00		//r1 = r2
+22 24 00 00		//r2 = r4
+0C 55 FF FF		//decrement loop count r5--
+1C 50 FF E4 	//loop back if r5 >= 0	
+FF 00 00 00		//halt

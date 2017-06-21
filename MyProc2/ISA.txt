@@ -1,0 +1,83 @@
+ISA
+v2.0 - for MyProc2
+
+inspired from MIPS, x86 ISA
+
+Sixteen 32-bit registers = R0 - R15
+
+R31 has return address
+
+Changes in MyProc2:
+-------------------
+ - Number of registes = 32
+ - R0 = 0 always
+ - instruction memory access is aligned
+ - Instruction encoding changes
+ - OpCode Changes for HALT
+ 
+
+32-bit wide Instruction Set
+
+------------------------------------------------------
+Type	31:26	25:21	20:16	15:11	10:6	5:0
+------------------------------------------------------
+R 		Opcode	Rd		Rs		Rt	 	shamt	funct
+I		Opcode	Rd		Rs 		Imm[15:0]
+J 		Opcode	target[25:0]
+
+
+Instruction Set
+---------------
+NOP						0
+
+R Type
+
+ADD Rd, Rs, Rt 			1		Rd=Rs+Rt
+SUB Rd, Rs, Rt 			2		Rd=Rs-Rt
+AND	Rd, Rs, Rt 			3		Rd=Rs&Rt
+OR	Rd, Rs, Rt 			4		Rd=Rs|Rt
+XOR	Rd, Rs, Rt 			5		Rd=Rs^Rt
+
+SLL Rd, Rs, shamt		6		Rd=Rt<<shamt
+SRL	Rd, Rt, shamt		7		Rd=(unsigned)Rt>>shamt
+SRA Rd, rt 				8		Rd=(signed)Rt>>1
+SLLV Rd, Rt, Rs 		9		Rd=Rt<<Rs
+SRLV rd, rt, rs 		10		rd=(unsiged)rt>>rs
+
+SLT	rd, rs, rt 			23		rd=1 if rs < rt
+
+MOV rd, rs 				34		rd=rs
+SWAP rd, rs 			35		swap rd and rs
+
+I Type
+
+ADDI rd, rs, const		12		rd=rs+const
+ORI	rd, rs, const		13		rd=rs|const
+ANDI rd, rs, const		14		rd=rs&const
+
+LUI	rd, const			15		rd=const<<16
+LDI rd, const			16		rd=const
+LW	rd, rs, const		17		rd=[rs + const]
+LH	rd, rs, const		18		rd=[rs + const](lower 2 bytes)
+LD 	rd, rs, const		19		rd=[rs + const](lower 1 byte)
+SW	rd, rs, const		20		[rs + const]=rd
+SH	rd, rs, const		21		[rs + const]=rd(lower 2 bytes)
+SD	rd, rs, const		22		[rs + const]=rd(lower 1 bytes)
+
+BEQ rd, rs, offset		24		branch to PC+1+offset if rd = rs
+BNE rd, rs, offset		25		branch to PC+1+offset if rd != rs
+BGTZ rd, offset			26		branch to PC+1+offset if rd > 0
+BLTZ rd, offset			27		branch to PC+1+offset if rd < 0
+BGEZ rd, offset			28		branch to PC+1+offset if rd >= 0
+BLEZ rd, offset			29		branch to PC+1+offset if rd <= 0
+
+JR	rd, offset 			30		jump to rd + (signed)offset
+JALR rd, offset			31		jump to rd + (signed)offset and link
+
+J Type
+
+J 	target				32		jump to target
+JAL	target				33		jump to target and link
+
+
+HALT 					63		HALT the processor

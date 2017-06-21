@@ -1,0 +1,103 @@
+$date
+	Mon May 01 19:44:37 2017
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	100ps
+$end
+$scope module tb_PrgCnt $end
+$scope module dut $end
+$var wire 8 ! add_out [7:0] $end
+$var wire 1 " clk $end
+$var wire 1 # ld $end
+$var wire 8 $ ld_add [7:0] $end
+$var wire 1 % rst $end
+$var reg 8 & count [7:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b0 &
+1%
+bx $
+0#
+0"
+b0 !
+$end
+#100
+1"
+#200
+0%
+0"
+#300
+b100 !
+b100 &
+1"
+#400
+1#
+b1010 $
+0"
+#500
+b1010 !
+b1010 &
+1"
+#600
+0#
+0"
+#700
+b1110 !
+b1110 &
+1"
+#800
+0"
+#900
+b10010 !
+b10010 &
+1"
+#1000
+0"
+#1100
+b10110 !
+b10110 &
+1"
+#1200
+0"
+#1300
+b11010 !
+b11010 &
+1"
+#1400
+0"
+#1500
+b11110 !
+b11110 &
+1"
+#1600
+b0 !
+b0 &
+1%
+0"
+#1700
+1"
+#1800
+0"
+0%
+#1900
+b100 !
+b100 &
+1"
+#2000
+0"
+#2100
+b1000 !
+b1000 &
+1"
+#2200
+0"
+#2300
+b1100 !
+b1100 &
+1"

@@ -9,33 +9,31 @@
 module ID_mod (
 	input wire clk,    // Clock
 	input wire rst_n,  // Asynchronous reset active low
+	
 	// pipeline in
 	input wire [`WIDTH - 1:0] IR_in,
 	input wire [`WIDTH - 3:0] PC_in,
+	
 	// pipeline out
 	output reg [`WIDTH - 1:0] IR_out,
 	output reg [`WIDTH - 3:0] PC_out,
-	output reg [`REG_ADDR_LEN - 1:0] Rd_no,
-	output reg [`REG_ADDR_LEN - 1:0] Rs_no,
-	output reg [`WIDTH - 1:0] Rs_data,
-	output reg [`REG_ADDR_LEN - 1:0] Rt_no,
-	output reg [`WIDTH - 1:0] Rt_data,
+	output reg [`WIDTH - 1:0] X,
+	output reg [`WIDTH - 1:0] Y,
+	
 	// Reg in/out
-	output reg [`REG_ADDR_LEN - 1:0] Rd1_add,
+	output reg [`REG_ADDR_LEN - 1:0] Rd1_addr,
 	input wire [`WIDTH - 1:0] Rd1_data,
 	output reg Rd1_en,
 	input wire Rd1_st,
-	output reg [`REG_ADDR_LEN - 1:0] Rd2_add,
+	output reg [`REG_ADDR_LEN - 1:0] Rd2_addr,
 	input wire [`WIDTH - 1:0] Rd2_data,
 	output reg Rd2_en,
 	input wire Rd2_st,
+
 	input wire IsStall,
 	input wire IsFlush
 );
 	
-	//reg [`WIDTH - 1:0] IR;
-	//reg [`WIDTH - 3:0] PC;
-
 	wire [5:0] OpCode;
 	wire [4:0] Rd;
 	wire [4:0] Rs;
@@ -66,18 +64,19 @@ module ID_mod (
 	always @(posedge clk) begin
 		case(OpCode)
 			`R_TYPE: begin
-				Rd1_add <= Rs;
-				Rs_no <= Rs;
-				Rd2_add <= Rt;
-				Rt_no <= Rt;
+				Rd1_addr <= Rs;
+				Rd2_addr <= Rt;
 			end
 			`I_TYPE: begin
-				Rd1_add <= Rs;
-				Rs_no <= Rs;
-				Rt_data <= sext16(Imm);
+				Rd1_addr <= Rs;
+				Y <= sext16(Imm);
+			end
+			`Branch: begin
+				Rd1_addr <= Rd;
+				Y <= sext16(Imm);
 			end
 			`J_TYPE: begin
-				Rs_data <= sext25(Tgt);
+				X <= Tgt;
 			end
 			`NOP:	begin
 				
@@ -89,11 +88,11 @@ module ID_mod (
 	end
 
 	always @(posedge Rd1_st) begin
-		Rs_data <= Rd1_data;
+		X <= Rd1_data;
 	end
 
 	always @(posedge Rd2_st) begin
-		Rt_data <= Rd2_data;
+		Y <= Rd2_data;
 	end
 
 	function [`WIDTH-1:0] sext16(
@@ -102,10 +101,4 @@ module ID_mod (
 		sext16[`WIDTH-1:0] = {{(`WIDTH-16){d_in[15]}}, d_in};
 	end
 	endfunction
-
-	function [`WIDTH-1:0] sext25(
-	input [24:0] d_in);
-	sext25[`WIDTH-1:0] = {{(`WIDTH-25){d_in[24]}}, d_in};
-	endfunction
-
 endmodule

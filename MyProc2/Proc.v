@@ -35,12 +35,28 @@ module Proc (
 	Int_Reg_1_mod Int_Reg_IF_ID(.clk(clk), .IR_in(IR_IF_to_Int_Reg), .PC_in(PC_IF_to_Int_Reg), 
 		.IR_out(IR_Int_Reg_to_ID), .PC_out(PC_Int_Reg_to_ID));
 
-	// wires for Reg to ID
+	// wires for Reg to ID - Read port 1
+	wire [`WIDTH - 1:0] Rd1_data;
+	wire [`REG_ADDR_LEN - 1:0] Rd1_addr;
+	wire Rd1_en;
+	wire Rd1_st;
+	// Read port 2
+	wire [`WIDTH - 1:0] Rd2_data;
+	wire [`REG_ADDR_LEN - 1:0] Rd2_addr;
+	wire Rd2_en;
+	wire Rd2_st;
+	// Write port
+	wire [`WIDTH - 1:0] Wt_data;
+	wire [`REG_ADDR_LEN - 1:0] Wt_addr;
+	wire Wt_en;
 
-	
-	Reg_mod Reg(.clk(clk));
+	Reg_mod Reg(.clk(clk), .ra(Rd1_addr), .dataA(Rd1_data), .r_en_A(Rd1_en), .st_A(Rd1_st),
+		.rb(Rd2_addr), .dataB(Rd2_data), .r_en_B(Rd2_en), .st_B(Rd2_st),
+		.rc(Wt_addr), .dataC(Wt_data), .w_en(Wt_en));
 
-	ID_mod ID(.clk(clk), .PC_in(PC_Int_Reg_to_ID), .IR_in(IR_Int_Reg_to_ID));
+	ID_mod ID(.clk(clk), .PC_in(PC_Int_Reg_to_ID), .IR_in(IR_Int_Reg_to_ID), 
+		.Rd1_addr(Rd1_addr), .Rd1_data(Rd1_data), .Rd1_en(Rd1_en), .Rd1_st(Rd1_st),
+		.Rd2_addr(Rd2_addr), .Rd2_data(Rd2_data), .Rd2_en(Rd2_en), .Rd2_st(Rd2_st));
 
 
 

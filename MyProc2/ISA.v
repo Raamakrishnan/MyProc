@@ -1,4 +1,5 @@
 //ISA definitions
+//v2.0 for MyProc2
 
 //define fields of instruction
 `define OPCODE  IR[31:26]
@@ -13,7 +14,7 @@
 `define NOP 	'd0
 
 //R Type
-`define R_TYPE	`ADD, `SUB, `AND, `OR, `XOR, `SLL, `SRL, `SRA, `SLLV, `SRLV, `SRAV, `SLT, `MOV, `SWAP
+`define R_TYPE	`ADD, `SUB, `AND, `OR, `XOR, `SLL, `SRL, `SRA, `SLLV, `SRLV, `SRAV, `SLT
 
 `define ADD 	'd1
 `define SUB 	'd2
@@ -30,11 +31,8 @@
 
 `define SLT		'd23
 
-`define MOV		'd34
-`define SWAP	'd35
-
 //I Type
-`define I_TYPE `ADDI, `ORI, `ANDI, `LUI, `LDI, `LW, `LH, `LD, `SW, `SH, `SD, `BEQ, `BNE, `BGTZ, `BLTZ, `BGEZ, `BLEZ, `JR, `JALR
+`define I_TYPE `ADDI, `ORI, `ANDI, `LUI, `LDI, `LW, `LH, `LD, `SW, `SH, `SD
 
 `define ADDI	'd12
 `define ORI		'd13
@@ -48,6 +46,9 @@
 `define SW		'd20
 `define SH		'd21
 `define SD		'd22
+
+// Branch
+`define Branch	`BEQ, `BNE, `BGTZ, `BLTZ, `BGEZ, `BLEZ, `JR, `JALR
 
 `define BEQ		'd24
 `define BNE		'd25

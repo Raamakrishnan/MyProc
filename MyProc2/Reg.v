@@ -12,7 +12,8 @@ module Reg_mod(
 	output reg [`WIDTH - 1:0] dataB,
 	output reg st_A,	// output strobe
 	output reg st_B,	// output strobe
-	input wire r_en,
+	input wire r_en_A,
+	input wire r_en_B,
 	input wire [`REG_ADDR_LEN - 1:0] rc,
 	input wire [`WIDTH -1 :0] dataC,
 	input wire w_en
@@ -21,32 +22,31 @@ module Reg_mod(
 	reg [`WIDTH - 1:0] RegFile [`NUM_REGS - 1:0];
 
 	always @(posedge clk) begin
-		if (w_en && CheckRegNo(rc)) begin
+		if (w_en) begin
 			if(rc != 0)
 				RegFile[rc] <= dataC;
 		end
 	end
 
 	always @(negedge clk) begin
-		if (r_en && CheckRegNo(ra) && CheckRegNo(rb)) begin
+		if (r_en_A) begin
+			st_A = 0;
 			if(ra != 0)
-				dataA <= RegFile[ra];
+				dataA = RegFile[ra];
 			else 
-				dataA <= 'd0;
-			if(rb != 0)
-				dataB <= RegFile[rb];
-			else 
-				dataB <= 'd0;
+				dataA = 'd0;
+			st_A = 1;
 		end
 	end
 
-	function CheckRegNo(
-		input no);
-		begin
-			if(no <= `NUM_REGS - 1)
-				CheckRegNo = 'd1;
+	always @(negedge clk) begin
+		if (r_en_B) begin
+			st_B = 0;
+			if(rb != 0)
+				dataB = RegFile[rb];
 			else 
-				CheckRegNo = 'd0;
+				dataB = 'd0;
+			st_B = 1;
 		end
-	endfunction
+	end
 endmodule

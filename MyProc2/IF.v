@@ -9,8 +9,7 @@
 module IF(
 	input wire clk,    	// Clock
 	input wire rst_n,
-	//input wire [`WIDTH - 1:0] data,	// instruction
-	//output reg [`WIDTH - 3:0] addr, // last 2 bits are always 0 for aligned memory access
+	
 	// pipeline output
 	output reg [`WIDTH - 3:0] PC, // Program Counter
 	output reg [`WIDTH - 1:0] IR, // instruction

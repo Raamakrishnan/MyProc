@@ -65,15 +65,25 @@ module ID (
 		case(OpCode)
 			`R_TYPE: begin
 				Rd1_addr <= Rs;
+				Rd1_en <= 1;
 				Rd2_addr <= Rt;
+				Rd2_en <= 1;
 			end
 			`I_TYPE: begin
 				Rd1_addr <= Rs;
+				Rd1_en <= 1;
 				Y <= sext16(Imm);
 			end
 			`Branch: begin
 				Rd1_addr <= Rd;
+				Rd1_en <= 1;
 				Y <= sext16(Imm);
+			end
+			`SD, `SH, `SW: begin
+				Rd1_addr <= Rd;
+				Rd1_en <= 1;
+				Rd2_addr <= Rs;
+				Rd2_en <= 1;
 			end
 			`J_TYPE: begin
 				X <= Tgt;

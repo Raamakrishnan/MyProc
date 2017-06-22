@@ -19,6 +19,7 @@ module EXE (
 	output reg [`WIDTH - 1:0] IR_out,
 	output reg [`WIDTH - 3:0] PC_out,
 	output reg [`WIDTH - 1:0] Z,
+	output reg [`WIDTH - 1:0] Addr,
 
 	input wire IsStall,
 	output reg IsBranchTaken,
@@ -33,11 +34,12 @@ module EXE (
 
 	wire [5:0] OpCode;
 	wire [4:0] Shamt;
+	wire [15:0] Imm;
 	
 	assign OpCode = IR_in[31:26];
 	assign Shamt = IR_in[10:6];
 	assign Imm = IR_in[15:0];
-	assign Tgt = IR_in[25:0];
+	//assign Tgt = IR_in[25:0];
 
 	reg [`WIDTH:0] res;
 
@@ -108,8 +110,13 @@ module EXE (
 					Z = Y << 16;
 				end
 				
-				`LW, `LH, `LD, `SW, `SH, `SD: begin
-					Z = X + Y;
+				`LW, `LH, `LD: begin 
+					Addr = X + Y;
+				end
+
+				`SW, `SH, `SD: begin
+					Addr = Y + sext16(Imm);
+					Z = X;
 				end
 
 				// Branches
@@ -174,5 +181,12 @@ module EXE (
 			FV = ( res[`WIDTH-1] & op1[`WIDTH-1] & ~(subt ^ op2[`WIDTH-1])) | (~res[`WIDTH-1] & op1[`WIDTH-1] & (subt ^ op2[`WIDTH-1]));
 		end
 	endtask
+
+	function [`WIDTH-1:0] sext16(
+		input [15:0] d_in);
+		begin
+			sext16[`WIDTH-1:0] = {{(`WIDTH-16){d_in[15]}}, d_in};
+		end
+	endfunction
 
 endmodule

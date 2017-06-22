@@ -11,7 +11,7 @@ Changes in MyProc2:
 -------------------
  - Number of registes = 32
  - R0 = 0 always
- - instruction memory access is aligned
+ - Instruction/Data memory access is aligned
  - Instruction encoding changes
  - OpCode Changes for HALT
  - Removed MOV, SWAP

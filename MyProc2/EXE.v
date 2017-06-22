@@ -150,7 +150,7 @@ module EXE_mod (
 					
 				end
 				default: begin
-					$display("Unknown OpCode")
+					$display("Unknown OpCode");
 				end
 			endcase
 		end

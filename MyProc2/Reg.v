@@ -4,7 +4,7 @@
 
 //32 bit registers - 32 Nos.
 
-module Reg_mod(
+module Reg(
 	input wire clk,    // Clock
 	input wire [`REG_ADDR_LEN - 1:0] ra,
 	input wire [`REG_ADDR_LEN - 1:0] rb,

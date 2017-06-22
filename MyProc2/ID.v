@@ -6,7 +6,7 @@
 	`include "ISA.v"
 `endif
 
-module ID_mod (
+module ID (
 	input wire clk,    // Clock
 	input wire rst_n,  // Asynchronous reset active low
 	

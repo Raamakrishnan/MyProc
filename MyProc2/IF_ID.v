@@ -2,7 +2,7 @@
 	`include "params.v"
 `endif
 
-module Int_Reg_1_mod (
+module IF_ID (
 	input clk,    // Clock
 	input [`WIDTH - 3:0] PC_in,
 	input [`WIDTH - 1:0] IR_in,

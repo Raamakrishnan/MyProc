@@ -3,7 +3,7 @@
 `endif
 
 // Data Memory
-module IMem_mod(
+module IMem(
 	input wire rst_n,
 	input wire [`WIDTH - 3:0] add, // last 2 bits are always 0 for aligned memory access
 	output reg [`WIDTH - 1:0] data

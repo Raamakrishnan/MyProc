@@ -6,7 +6,7 @@
 	`include "ISA.v"
 `endif
 
-module EXE_mod (
+module EXE (
 	input wire clk,    // Clock
 	
 	// pipeline inputs

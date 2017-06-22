@@ -6,7 +6,7 @@
 	`include "IMem.v"
 `endif
 
-module IF_mod(
+module IF(
 	input wire clk,    	// Clock
 	input wire rst_n,
 	//input wire [`WIDTH - 1:0] data,	// instruction
@@ -23,7 +23,7 @@ module IF_mod(
 	// reg [`WIDTH - 3:0] PC;	
 	wire [`WIDTH - 1:0] Ins_in;
 	//reg [`WIDTH - 1:0] Ins_reg;
-	IMem_mod IMem(.rst_n(rst_n), .data(Ins_in), .add(PC));
+	IMem IMem(.rst_n(rst_n), .data(Ins_in), .add(PC));
 
 	always @(posedge clk or negedge rst_n) begin
 		if(~rst_n) begin

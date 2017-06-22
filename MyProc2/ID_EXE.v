@@ -2,7 +2,7 @@
 	`include "params.v"
 `endif
 // Intermediate Register between ID and MEM
-module Int_Reg_2 (
+module ID_EXE (
 	input clk,    // Clock
 	// pipeline in
 	input wire [`WIDTH - 1:0] IR_in,

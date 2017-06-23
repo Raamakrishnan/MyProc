@@ -21,6 +21,12 @@
 `define INCLUDE_EXE_MOD
 `include "EXE.v"
 
+`include "EXE_MEM.v"
+
+`include "DMem.v"
+`define INCLUDE_MEM_MOD
+`include "MEM.v"
+
 module Proc (
 	input clk,    	// Clock
 	input rst_n,	// Asynchronous reset active low
@@ -76,8 +82,30 @@ module Proc (
 		.Rd2_addr(Rd2_addr), .Rd2_data(Rd2_data), .Rd2_en(Rd2_en), .Rd2_st(Rd2_st),
 		.PC_out(PC_ID_EXE1), .IR_out(IR_ID_EXE1), .X(X_ID_EXE1), .Y(Y_ID_EXE1));		// pipeline out
 
-	ID_EXE ID_EXE();
+	ID_EXE ID_EXE(.clk(clk), .PC_in(PC_ID_EXE1), .IR_in(IR_ID_EXE1), .X_in(X_ID_EXE1), .Y_in(Y_ID_EXE1),	//pipeline in
+		.PC_out(PC_ID_EXE2), .IR_out(IR_ID_EXE2), .X_out(X_ID_EXE2), .Y_out(Y_ID_EXE2));	// pipeline out
 
-	EXE EXE(.clk(clk), .PC_in(PC_ID_EXE2), .IR_in(IR_ID_EXE2), .X(X_ID_EXE2), .Y(Y_ID_EXE2));
+	// wires for EXE to EXE-MEM
+	wire [`WIDTH - 3:0] PC_EXE_MEM1;
+	wire [`WIDTH - 1:0] IR_EXE_MEM1;
+	wire [`WIDTH - 1:0] Z_EXE_MEM1;
+	wire [`WIDTH - 1:0] Addr_EXE_MEM1;
+
+	// wires for EXE-MEM to MEM
+	wire [`WIDTH - 3:0] PC_EXE_MEM2;
+	wire [`WIDTH - 1:0] IR_EXE_MEM2;
+	wire [`WIDTH - 1:0] Z_EXE_MEM2;
+	wire [`WIDTH - 1:0] Addr_EXE_MEM2;	
+
+	EXE EXE(.clk(clk), .PC_in(PC_ID_EXE2), .IR_in(IR_ID_EXE2), .X(X_ID_EXE2), .Y(Y_ID_EXE2), 	// pipeline in
+		.PC_out(PC_EXE_MEM1), .IR_out(IR_EXE_MEM1), .Z(Z_EXE_MEM1), .Addr(Addr_EXE_MEM1) 		// pipeline out
+		);
+
+	EXE_MEM EXE_MEM(.clk(clk), .PC_in(PC_EXE_MEM1), .IR_in(IR_EXE_MEM1), .Z_in(Z_EXE_MEM1), .Addr_in(Addr_EXE_MEM1), // pipeline in
+		.PC_out(PC_EXE_MEM2), .IR_out(IR_EXE_MEM2), .Z_out(Z_EXE_MEM2), .Addr_out(Addr_EXE_MEM2));
+
+	MEM MEM(.clk(clk), .PC_in(PC_EXE_MEM2), .IR_in(IR_EXE_MEM2), .Z_in(Z_EXE_MEM2), .Addr(Addr_EXE_MEM2)); 	// pipeline out);
+
+
 
 endmodule

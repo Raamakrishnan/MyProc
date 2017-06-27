@@ -16,15 +16,21 @@ module Reg(
 	input wire r_en_B,
 	input wire [`REG_ADDR_LEN - 1:0] rc,
 	input wire [`WIDTH -1 :0] dataC,
-	input wire w_en
+	input wire w_en,
+	input wire [2:0] w_mode //w_mode: 0-word, 1-halfword, 2-byte
 );
 
 	reg [`WIDTH - 1:0] RegFile [`NUM_REGS - 1:0];
 
 	always @(posedge clk) begin
 		if (w_en) begin
-			if(rc != 0)
-				RegFile[rc] <= dataC;
+			if(rc != 0) begin
+				case(w_mode)
+					0:	RegFile[rc] <= dataC;
+					1:	RegFile[rc] <= {16'b0, dataC[15:0]};
+					2:	RegFile[rc] <= {24'b0, dataC[7:0]};
+				endcase
+			end
 		end
 	end
 

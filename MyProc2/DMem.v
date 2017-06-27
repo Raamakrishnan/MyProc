@@ -26,7 +26,7 @@ module DMem(
 				{mem[add], mem[add+1]} = data[15:0];
 			end
 			2: begin // byte
-				mem[add] = data[15:0];
+				mem[add] = data[7:0];
 			end
 		endcase
 	end

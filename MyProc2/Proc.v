@@ -27,6 +27,11 @@
 `define INCLUDE_MEM_MOD
 `include "MEM.v"
 
+`include "MEM_WB.v"
+
+`define INCLUDE_WB_MOD
+`include "WB.v"
+
 module Proc (
 	input clk,    	// Clock
 	input rst_n,	// Asynchronous reset active low
@@ -60,6 +65,7 @@ module Proc (
 	wire [`WIDTH - 1:0] Wt_data;
 	wire [`REG_ADDR_LEN - 1:0] Wt_addr;
 	wire Wt_en;
+	wire [1:0] w_mode;
 
 	Reg Reg(.clk(clk), .ra(Rd1_addr), .dataA(Rd1_data), .r_en_A(Rd1_en), .st_A(Rd1_st),
 		.rb(Rd2_addr), .dataB(Rd2_data), .r_en_B(Rd2_en), .st_B(Rd2_st),
@@ -102,10 +108,25 @@ module Proc (
 		);
 
 	EXE_MEM EXE_MEM(.clk(clk), .PC_in(PC_EXE_MEM1), .IR_in(IR_EXE_MEM1), .Z_in(Z_EXE_MEM1), .Addr_in(Addr_EXE_MEM1), // pipeline in
-		.PC_out(PC_EXE_MEM2), .IR_out(IR_EXE_MEM2), .Z_out(Z_EXE_MEM2), .Addr_out(Addr_EXE_MEM2));
+		.PC_out(PC_EXE_MEM2), .IR_out(IR_EXE_MEM2), .Z_out(Z_EXE_MEM2), .Addr_out(Addr_EXE_MEM2));	// pipeline in
 
-	MEM MEM(.clk(clk), .PC_in(PC_EXE_MEM2), .IR_in(IR_EXE_MEM2), .Z_in(Z_EXE_MEM2), .Addr(Addr_EXE_MEM2)); 	// pipeline out);
+	// wires for MEM to MEM-WB
+	wire [`WIDTH - 3:0] PC_MEM_WB1;
+	wire [`WIDTH - 1:0] IR_MEM_WB1;
+	wire [`WIDTH - 1:0] Z_MEM_WB1;
 
+	// wires for MEM to MEM-WB
+	wire [`WIDTH - 3:0] PC_MEM_WB2;
+	wire [`WIDTH - 1:0] IR_MEM_WB2;
+	wire [`WIDTH - 1:0] Z_MEM_WB2;	
 
+	MEM MEM(.clk(clk), .PC_in(PC_EXE_MEM2), .IR_in(IR_EXE_MEM2), .Z_in(Z_EXE_MEM2), .Addr(Addr_EXE_MEM2), // pipeline in
+		.PC_out(PC_MEM_WB1), .IR_out(IR_MEM_WB1), .Z_out(Z_MEM_WB1)); 	// pipeline out
+
+	MEM_WB MEM_WB(.clk(clk), .PC_in(PC_MEM_WB1), .IR_in(IR_MEM_WB1), .Z_in(Z_MEM_WB1), // pipeline in
+		.PC_out(PC_MEM_WB2), .IR_out(IR_MEM_WB2), .Z_out(Z_MEM_WB2));
+
+	WB WB(.clk(clk), .PC_in(PC_MEM_WB2), .IR_in(IR_MEM_WB2), .Z_in(Z_MEM_WB2), // pipeline in
+		.Addr(Wt_addr), .Data(Wt_data), .wr_en(w_en), .w_mode(w_mode));	
 
 endmodule

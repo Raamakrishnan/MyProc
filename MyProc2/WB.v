@@ -18,7 +18,7 @@ module WB (
 	output reg Halt,
 
 	// reg
-	output reg [`WIDTH - 1:0] Addr,
+	output reg [`REG_ADDR_LEN - 1:0] Addr,		
 	output reg [`WIDTH - 1:0] Data,
 	output reg wr_en,
 	output reg [1:0] w_mode //w_mode: 0-word, 1-halfword, 2-byte

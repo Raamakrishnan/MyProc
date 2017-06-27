@@ -32,7 +32,7 @@
 `define SLT		'd23
 
 //I Type
-`define I_TYPE `ADDI, `ORI, `ANDI, `LUI, `LDI, `LW, `LH, `LD
+`define I_TYPE `ADDI, `ORI, `ANDI, `LUI, `LDI
 
 `define ADDI	'd12
 `define ORI		'd13

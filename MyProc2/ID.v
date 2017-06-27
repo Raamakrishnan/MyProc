@@ -69,7 +69,7 @@ module ID (
 				Rd2_addr <= Rt;
 				Rd2_en <= 1;
 			end
-			`I_TYPE: begin
+			`I_TYPE, `LW, `LH, `LD: begin
 				Rd1_addr <= Rs;
 				Rd1_en <= 1;
 				Y <= sext16(Imm);

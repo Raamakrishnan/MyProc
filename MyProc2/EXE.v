@@ -146,11 +146,19 @@ module EXE (
 				end
 
 				//J Type
-				`J, `JAL:	begin
+				`J:	begin
 					BranchTaken(X);
 				end
-				`JR, `JALR:	begin
+				`JAL: begin
+					BranchTaken(X);
+					Z = X;
+				end
+				`JR: begin
 					BranchTaken(X + Y);
+				end
+				`JALR: begin
+					Z = X + Y;
+					BranchTaken(Z);
 				end
 
 				`NOP, `HALT: begin

@@ -17,7 +17,7 @@ module Reg(
 	input wire [`REG_ADDR_LEN - 1:0] rc,
 	input wire [`WIDTH -1 :0] dataC,
 	input wire w_en,
-	input wire [2:0] w_mode //w_mode: 0-word, 1-halfword, 2-byte
+	input wire [1:0] w_mode //w_mode: 0-word, 1-halfword, 2-byte
 );
 
 	reg [`WIDTH - 1:0] RegFile [`NUM_REGS - 1:0];

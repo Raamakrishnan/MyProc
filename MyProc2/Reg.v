@@ -55,4 +55,22 @@ module Reg(
 			st_B = 1;
 		end
 	end
+
+`ifdef TRACE_REG
+	integer i,j,k;
+	always @(posedge clk) begin
+		k=0;
+		for(i=0;i<32;i+=4)
+		begin
+			//$write("R[%d] = ", k);
+			for(j=0;j<4;j++)
+				begin
+					$write("R[%d] = %h\t", k, R[k]);
+					k +=1;
+				end
+			$write("\n");
+		end
+	end
+`endif
+
 endmodule

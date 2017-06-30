@@ -1,0 +1,2 @@
+ORI r1, r0, 1
+HALT

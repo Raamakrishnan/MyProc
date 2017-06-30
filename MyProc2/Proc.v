@@ -127,6 +127,13 @@ module Proc (
 		.PC_out(PC_MEM_WB2), .IR_out(IR_MEM_WB2), .Z_out(Z_MEM_WB2));
 
 	WB WB(.clk(clk), .PC_in(PC_MEM_WB2), .IR_in(IR_MEM_WB2), .Z_in(Z_MEM_WB2), // pipeline in
-		.Addr(Wt_addr), .Data(Wt_data), .wr_en(w_en), .w_mode(w_mode));	
+		.Addr(Wt_addr), .Data(Wt_data), .wr_en(w_en), .w_mode(w_mode),	// register
+		.Halt(Halt));
+
+`ifdef TRACE_PIPELINE
+	always @(posedge clk) begin
+		$display($time, "IF-ID IR=%h, PC=%h", IR_IF_ID1, PC_IF_ID1);
+	end
+`endif
 
 endmodule

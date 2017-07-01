@@ -1,5 +1,5 @@
 `include "Proc.v"
-
+`timescale 1ns/100ps
 // Trace
 `define TRACE_REG
 `define TRACE_PIPELINE
@@ -22,7 +22,7 @@ module tb_Proc ();
 		rst_n = 0;	// negedge to reset
 	end
 
-	always @(halt) begin
+	always @(posedge halt) begin
 		$display($time ,"End of sim");
 		$finish;
 	end

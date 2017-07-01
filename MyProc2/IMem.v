@@ -16,11 +16,11 @@ module IMem(
 		$readmemh("d", mem, 0, 71);
 	end
 
-	reg exten_add;
+	reg [`WIDTH - 1:0] exten_add;
 
-	always @(*) begin
+	always @(add) begin
 		// extend last 2 bits of address
 		exten_add = {add, 1'b0, 1'b0};
-		data <= {mem[exten_add], mem[exten_add], mem[exten_add], mem[exten_add]};
+		data <= {mem[exten_add], mem[exten_add+1], mem[exten_add+2], mem[exten_add+3]};
 	end
 endmodule

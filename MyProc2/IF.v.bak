@@ -35,7 +35,7 @@ module IF(
 			PC = BranchAddr;
 			IR = Ins_in;
 		end else begin
-			PC = PC + 1;
+			PC = PC + 4;
 			IR = Ins_in;
 		end
 	end

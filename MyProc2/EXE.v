@@ -16,8 +16,8 @@ module EXE (
 	input wire [`WIDTH - 1:0] Y,
 
 	// pipeline outputs
-	output reg [`WIDTH - 1:0] IR_out,
-	output reg [`WIDTH - 3:0] PC_out,
+	output wire [`WIDTH - 1:0] IR_out,
+	output wire [`WIDTH - 3:0] PC_out,
 	output reg [`WIDTH - 1:0] Z,
 	output reg [`WIDTH - 1:0] Addr,
 
@@ -41,6 +41,9 @@ module EXE (
 	assign Imm = IR_in[15:0];
 	//assign Tgt = IR_in[25:0];
 
+	assign IR_out = (IsStall === 1)?IR_out:IR_in;
+	assign PC_out = (IsStall === 1)?PC_out:PC_in;
+
 	reg [`WIDTH:0] res;
 
 	always @(posedge clk) begin
@@ -49,8 +52,8 @@ module EXE (
 		end
 		else begin
 			IsBranchTaken = 0;
-			IR_out = IR_in;
-			PC_out = PC_in;
+			//IR_out = IR_in;
+			//PC_out = PC_in;
 			case(OpCode)
 				`ADD, `ADDI: 	begin
 					res = X + Y;

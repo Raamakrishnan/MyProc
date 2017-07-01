@@ -9,7 +9,7 @@ z2
 cModel Technology
 dD:/Electronics/MyProcessor
 vDMem
-Z0 !s110 1498904203
+Z0 !s110 1498905954
 !i10b 1
 !s100 ddj8?5MJdSRPJ=B8k`K=N1
 IQfda97:PPMigCzP=3B;zg3
@@ -23,7 +23,7 @@ Z3 OV;L;10.5b;63
 r1
 !s85 0
 31
-Z4 !s108 1498904203.000000
+Z4 !s108 1498905954.000000
 Z5 !s107 WB.v|MEM_WB.v|MEM.v|DMem.v|EXE_MEM.v|EXE.v|ID_EXE.v|ID.v|Reg.v|IF_ID.v|IF.v|IMem.v|ISA.v|params.v|Proc.v|D:/Electronics/Verilog/MyProc/MyProc2/tb_Proc.v|
 Z6 !s90 -reportprogress|300|-work|work|-stats=none|D:/Electronics/Verilog/MyProc/MyProc2/tb_Proc.v|
 !i113 1
@@ -33,11 +33,11 @@ n@d@mem
 vEXE
 R0
 !i10b 1
-!s100 PC2BEbKg=oZVdRd6hYD^U3
-IAj`P1bQKaV<nmL`PJWagk1
+!s100 l[894DYV1>?^Ion7nEKQd0
+I0N:jG:DmI_EgO;8l?0Te31
 R1
 R2
-w1498883996
+w1498905826
 8EXE.v
 FEXE.v
 L0 9
@@ -75,23 +75,23 @@ R7
 R8
 n@e@x@e_@m@e@m
 vID
-!s110 1498905496
+R0
 !i10b 1
-!s100 QWPeEVKd6d3Zh8lV3^eEj1
-I3ZHg8PD^`L`A5[4HnE[TV2
+!s100 HFHSXgd<SN0Lc5WoUG`=72
+Ij0?A]zBh@;G2JTdL7Dfzc1
 R1
 R2
 w1498905491
-8D:/Electronics/Verilog/MyProc/MyProc2/ID.v
-FD:/Electronics/Verilog/MyProc/MyProc2/ID.v
+8ID.v
+FID.v
 L0 9
 R3
 r1
 !s85 0
 31
-!s108 1498905496.000000
-!s107 ISA.v|params.v|D:/Electronics/Verilog/MyProc/MyProc2/ID.v|
-!s90 -reportprogress|300|-work|work|-stats=none|D:/Electronics/Verilog/MyProc/MyProc2/ID.v|
+R4
+R5
+R6
 !i113 1
 R7
 R8
@@ -119,54 +119,54 @@ R7
 R8
 n@i@d_@e@x@e
 vIF
-Z10 !s110 1498904368
+R0
 !i10b 1
-!s100 d:FFYaKdcVCYzLh5ebJg50
-I6I=TRc?:7Mf0Xk:F6_0LQ2
+!s100 L1dl0WVN4AHV;[72Wa<4Q1
+I8VXe088ZLBic5?RFh`DIP0
 R1
 R2
 w1498904365
-8D:/Electronics/Verilog/MyProc/MyProc2/IF.v
-FD:/Electronics/Verilog/MyProc/MyProc2/IF.v
+8IF.v
+FIF.v
 L0 9
 R3
 r1
 !s85 0
 31
-Z11 !s108 1498904368.000000
-Z12 !s107 IMem.v|params.v|D:/Electronics/Verilog/MyProc/MyProc2/IF.v|
-Z13 !s90 -reportprogress|300|-work|work|-stats=none|D:/Electronics/Verilog/MyProc/MyProc2/IF.v|
+R4
+R5
+R6
 !i113 1
 R7
 R8
 n@i@f
 vIF_ID
-!s110 1498904672
+R0
 !i10b 1
-!s100 ZXW[WcD91a9hlE51B?4m01
-Il2iCRi:_nSPTi]_gBzk452
+!s100 0T`Q5S]VbOIMB410VaXJe0
+I4N5;O0BfV4UX^aE6oW14D2
 R1
 R2
 w1498904669
-8D:/Electronics/Verilog/MyProc/MyProc2/IF_ID.v
-FD:/Electronics/Verilog/MyProc/MyProc2/IF_ID.v
+8IF_ID.v
+FIF_ID.v
 L0 5
 R3
 r1
 !s85 0
 31
-!s108 1498904672.000000
-!s107 params.v|D:/Electronics/Verilog/MyProc/MyProc2/IF_ID.v|
-!s90 -reportprogress|300|-work|work|-stats=none|D:/Electronics/Verilog/MyProc/MyProc2/IF_ID.v|
+R4
+R5
+R6
 !i113 1
 R7
 R8
 n@i@f_@i@d
 vIMem
-R10
+R0
 !i10b 1
-!s100 FQk5[Ch]@;N;EEmJ[D@gS3
-I54<m:Z4bhCSe9]5EVn4bR2
+!s100 NLL[Ym]VMhELFK>4UQkHI3
+ID@``2Y`JY51QU[^bP4Mh70
 R1
 R2
 w1498852999
@@ -177,9 +177,9 @@ R3
 r1
 !s85 0
 31
-R11
-R12
-R13
+R4
+R5
+R6
 !i113 1
 R7
 R8
@@ -279,7 +279,7 @@ R0
 IL5UcWd8^J1PO_`;=f<<6c2
 R1
 R2
-w1498904026
+w1498905949
 8D:/Electronics/Verilog/MyProc/MyProc2/tb_Proc.v
 FD:/Electronics/Verilog/MyProc/MyProc2/tb_Proc.v
 L0 8

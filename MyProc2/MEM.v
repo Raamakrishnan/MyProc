@@ -20,8 +20,8 @@ module MEM (
 	input wire [`WIDTH - 1:0] Addr,
 
 	// pipeline outputs
-	output reg [`WIDTH - 1:0] IR_out,
-	output reg [`WIDTH - 3:0] PC_out,
+	output wire [`WIDTH - 1:0] IR_out,
+	output wire [`WIDTH - 3:0] PC_out,
 	output reg [`WIDTH - 1:0] Z_out
 
 );
@@ -39,14 +39,14 @@ module MEM (
 	reg [1:0] mode;
 
 	assign data = (data_v == 1)? data_reg : 32'hZ;
+	assign PC_out = PC_in;
+	assign IR_out = IR_in;
 
 	DMem DMem(.add(addr), .data(data), .wr(wr), .rd(rd), .rd_st(rd_st), .mode(mode));
 
 	always @(posedge clk) begin
 		rd = 0;
 		wr = 0;
-		PC_out = PC_in;
-		IR_out = IR_in;
 		case(OpCode)
 			`LW: begin
 				mode = 0;

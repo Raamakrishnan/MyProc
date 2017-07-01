@@ -32,6 +32,8 @@
 `define INCLUDE_WB_MOD
 `include "WB.v"
 
+`include "WB_out.v"
+
 module Proc (
 	input clk,    	// Clock
 	input rst_n,	// Asynchronous reset active low
@@ -128,9 +130,22 @@ module Proc (
 
 	wire halt_out;
 
+`ifdef TRACE_PIPELINE
+	wire [`WIDTH - 3:0] PC_WB_OUT1;
+	wire [`WIDTH - 1:0] IR_WB_OUT1;
+	wire [`WIDTH - 3:0] PC_WB_OUT2;
+	wire [`WIDTH - 1:0] IR_WB_OUT2;
+
+	WB_out WB_out(.clk(clk), .PC_in(PC_WB_OUT1), .IR_in(IR_WB_OUT1));
+`endif
+
 	WB WB(.clk(clk), .PC_in(PC_MEM_WB2), .IR_in(IR_MEM_WB2), .Z_in(Z_MEM_WB2), // pipeline in
 		.Addr(Wt_addr), .Data(Wt_data), .wr_en(w_en), .w_mode(w_mode),	// register
-		.Halt(halt_out));
+		.Halt(halt_out)
+`ifdef TRACE_PIPELINE
+		,.IR_out(IR_WB_out1), .PC_out(PC_WB_out1)
+`endif
+		);
 
 	always @(halt_out) begin
 		halt = halt_out;
@@ -138,10 +153,11 @@ module Proc (
 
 `ifdef TRACE_PIPELINE
 	always @(posedge clk) begin
-		$display($time, " IF IR=%h, PC=%h", IR_IF_ID1, PC_IF_ID1);
+		/*$display($time, " IF IR=%h, PC=%h", IR_IF_ID1, PC_IF_ID1);
 		$display($time, " ID IR=%h, PC=%h", IR_ID_EXE1, PC_ID_EXE1);
 		$display($time, " EXE IR=%h, PC=%h", IR_EXE_MEM1, PC_EXE_MEM1);
-		$display($time, " MEM IR=%h, PC=%h", IR_MEM_WB1, PC_MEM_WB1);
+		$display($time, " MEM IR=%h, PC=%h", IR_MEM_WB1, PC_MEM_WB1);*/
+		$display($time, " %h \t %h \t %h \t %h \t %h", IR_IF_ID1, IR_ID_EXE1, IR_EXE_MEM1, IR_MEM_WB1, IR_WB_OUT1);
 	end
 `endif
 

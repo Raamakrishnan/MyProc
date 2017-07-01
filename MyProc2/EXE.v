@@ -170,7 +170,8 @@ module EXE (
 					
 				end
 				default: begin
-					$display("Unknown OpCode");
+					if(OpCode !== 6'bxxxxxx)
+						$display("Unknown OpCode");
 				end
 			endcase
 		end

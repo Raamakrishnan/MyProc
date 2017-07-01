@@ -17,6 +17,12 @@ module WB (
 	// processor output
 	output reg Halt,
 
+`ifdef TRACE_PIPELINE
+	// debug output
+	output wire [`WIDTH - 1:0] IR_out,
+	output wire [`WIDTH - 3:0] PC_out,
+`endif
+
 	// reg
 	output reg [`REG_ADDR_LEN - 1:0] Addr,		
 	output reg [`WIDTH - 1:0] Data,
@@ -29,6 +35,11 @@ module WB (
 
 	assign OpCode = IR_in[31:26];
 	assign Rd = IR_in[25:21];
+
+`ifdef TRACE_PIPELINE
+	assign IR_out = IR_in;
+	assign PC_out = PC_in;
+`endif
 
 	always @(posedge clk) begin
 		Halt = 0;

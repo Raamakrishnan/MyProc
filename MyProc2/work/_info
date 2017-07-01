@@ -9,10 +9,10 @@ z2
 cModel Technology
 dD:/Electronics/MyProcessor
 vDMem
-Z0 !s110 1498906159
+Z0 !s110 1498907961
 !i10b 1
-!s100 VzVN4oBPH4:LoeO8SSY0Y2
-I4[_GW?mLU1^eMHMYQLPAi0
+!s100 ddj8?5MJdSRPJ=B8k`K=N1
+IQfda97:PPMigCzP=3B;zg3
 Z1 VDg1SIo80bB@j0V0VzS_@n1
 Z2 dD:/Electronics/Verilog/MyProc/MyProc2
 w1498578099
@@ -23,21 +23,21 @@ Z3 OV;L;10.5b;63
 r1
 !s85 0
 31
-Z4 !s108 1498906159.000000
-Z5 !s107 ISA.v|DMem.v|params.v|D:/Electronics/Verilog/MyProc/MyProc2/MEM.v|
-Z6 !s90 -reportprogress|300|-work|work|-stats=none|D:/Electronics/Verilog/MyProc/MyProc2/MEM.v|
+Z4 !s108 1498907961.000000
+Z5 !s107 WB_out.v|WB.v|MEM_WB.v|MEM.v|DMem.v|EXE_MEM.v|EXE.v|ID_EXE.v|ID.v|Reg.v|IF_ID.v|IF.v|IMem.v|ISA.v|params.v|Proc.v|D:/Electronics/Verilog/MyProc/MyProc2/tb_Proc.v|
+Z6 !s90 -reportprogress|300|-work|work|-stats=none|D:/Electronics/Verilog/MyProc/MyProc2/tb_Proc.v|
 !i113 1
 Z7 o-work work
 Z8 tCvgOpt 0
 n@d@mem
 vEXE
-Z9 !s110 1498905954
+R0
 !i10b 1
-!s100 l[894DYV1>?^Ion7nEKQd0
-I0N:jG:DmI_EgO;8l?0Te31
+!s100 SXG3<ORi1@fTzIbBT`W4F1
+IRKXOkTc5`5Qb9C>FAze@G1
 R1
 R2
-w1498905826
+w1498907928
 8EXE.v
 FEXE.v
 L0 9
@@ -45,21 +45,21 @@ R3
 r1
 !s85 0
 31
-Z10 !s108 1498905954.000000
-Z11 !s107 WB.v|MEM_WB.v|MEM.v|DMem.v|EXE_MEM.v|EXE.v|ID_EXE.v|ID.v|Reg.v|IF_ID.v|IF.v|IMem.v|ISA.v|params.v|Proc.v|D:/Electronics/Verilog/MyProc/MyProc2/tb_Proc.v|
-Z12 !s90 -reportprogress|300|-work|work|-stats=none|D:/Electronics/Verilog/MyProc/MyProc2/tb_Proc.v|
+R4
+R5
+R6
 !i113 1
 R7
 R8
 n@e@x@e
 vEXE_MEM
-R9
+R0
 !i10b 1
 !s100 91>llFV>RRzKVLXK@PXK[2
 I6BW046a4J^G@c>DYUTm[T2
 R1
 R2
-Z13 w1498577802
+Z9 w1498577802
 8EXE_MEM.v
 FEXE_MEM.v
 L0 5
@@ -67,15 +67,15 @@ R3
 r1
 !s85 0
 31
-R10
-R11
-R12
+R4
+R5
+R6
 !i113 1
 R7
 R8
 n@e@x@e_@m@e@m
 vID
-R9
+R0
 !i10b 1
 !s100 HFHSXgd<SN0Lc5WoUG`=72
 Ij0?A]zBh@;G2JTdL7Dfzc1
@@ -89,21 +89,21 @@ R3
 r1
 !s85 0
 31
-R10
-R11
-R12
+R4
+R5
+R6
 !i113 1
 R7
 R8
 n@i@d
 vID_EXE
-R9
+R0
 !i10b 1
 !s100 Ek_SccFV64>5NSAl=7gd>2
 I8mzAX65@c3Hd6RfKW6[N@1
 R1
 R2
-R13
+R9
 8ID_EXE.v
 FID_EXE.v
 L0 5
@@ -111,15 +111,15 @@ R3
 r1
 !s85 0
 31
-R10
-R11
-R12
+R4
+R5
+R6
 !i113 1
 R7
 R8
 n@i@d_@e@x@e
 vIF
-R9
+R0
 !i10b 1
 !s100 L1dl0WVN4AHV;[72Wa<4Q1
 I8VXe088ZLBic5?RFh`DIP0
@@ -133,15 +133,15 @@ R3
 r1
 !s85 0
 31
-R10
-R11
-R12
+R4
+R5
+R6
 !i113 1
 R7
 R8
 n@i@f
 vIF_ID
-R9
+R0
 !i10b 1
 !s100 0T`Q5S]VbOIMB410VaXJe0
 I4N5;O0BfV4UX^aE6oW14D2
@@ -155,15 +155,15 @@ R3
 r1
 !s85 0
 31
-R10
-R11
-R12
+R4
+R5
+R6
 !i113 1
 R7
 R8
 n@i@f_@i@d
 vIMem
-R9
+R0
 !i10b 1
 !s100 NLL[Ym]VMhELFK>4UQkHI3
 ID@``2Y`JY51QU[^bP4Mh70
@@ -177,9 +177,9 @@ R3
 r1
 !s85 0
 31
-R10
-R11
-R12
+R4
+R5
+R6
 !i113 1
 R7
 R8
@@ -187,13 +187,13 @@ n@i@mem
 vMEM
 R0
 !i10b 1
-!s100 M[A]b?[BXR8mAANIm9Oe03
-Ik=Ra8>ad`DhdLkP8Kn^TU3
+!s100 mGa50_UJMzmd2UCS=77O?1
+Id?@70E0hhh]L^BCK_MmCQ2
 R1
 R2
-w1498906157
-8D:/Electronics/Verilog/MyProc/MyProc2/MEM.v
-FD:/Electronics/Verilog/MyProc/MyProc2/MEM.v
+w1498907526
+8MEM.v
+FMEM.v
 L0 13
 R3
 r1
@@ -207,7 +207,7 @@ R7
 R8
 n@m@e@m
 vMEM_WB
-R9
+R0
 !i10b 1
 !s100 9>S^no20a6R5@zLSoh7AE1
 I=emkCZekbK_4^fAJYRRGd3
@@ -221,37 +221,37 @@ R3
 r1
 !s85 0
 31
-R10
-R11
-R12
+R4
+R5
+R6
 !i113 1
 R7
 R8
 n@m@e@m_@w@b
 vProc
-R9
+R0
 !i10b 1
-!s100 X5NBDSKe8zbI@@e78ZFQ?2
-I9IPSEK6i1_S0^K>Wgz>fT3
+!s100 hC7NkTc^fK3X?0U@]95431
+IXES3[C?LOZ?CgG4W[ZFX?3
 R1
 R2
-w1498904197
+w1498907755
 8Proc.v
 FProc.v
-L0 35
+L0 37
 R3
 r1
 !s85 0
 31
-R10
-R11
-R12
+R4
+R5
+R6
 !i113 1
 R7
 R8
 n@proc
 vReg
-R9
+R0
 !i10b 1
 !s100 QkZYS@?hU1Jzg`LcD?h:b0
 IU?M7SVZ;F6DlT;oJi1EZC0
@@ -265,21 +265,21 @@ R3
 r1
 !s85 0
 31
-R10
-R11
-R12
+R4
+R5
+R6
 !i113 1
 R7
 R8
 n@reg
 vtb_Proc
-R9
+R0
 !i10b 1
 !s100 h@F<zoW2^4o1V4MSc07N]2
 IL5UcWd8^J1PO_`;=f<<6c2
 R1
 R2
-w1498905949
+w1498906771
 8D:/Electronics/Verilog/MyProc/MyProc2/tb_Proc.v
 FD:/Electronics/Verilog/MyProc/MyProc2/tb_Proc.v
 L0 8
@@ -287,21 +287,21 @@ R3
 r1
 !s85 0
 31
-R10
-R11
-R12
+R4
+R5
+R6
 !i113 1
 R7
 R8
 ntb_@proc
 vWB
-R9
+R0
 !i10b 1
-!s100 dIGASfoZeb[a0C[9=cJD20
-IddY_Gk4<zBEb5ZZ8SbN3J3
+!s100 gT=?S>:><gZ@=EDTP^oO90
+IkagYlQIfEma1N1N>ZgPNP1
 R1
 R2
-w1498588413
+w1498907253
 8WB.v
 FWB.v
 L0 9
@@ -309,10 +309,32 @@ R3
 r1
 !s85 0
 31
-R10
-R11
-R12
+R4
+R5
+R6
 !i113 1
 R7
 R8
 n@w@b
+vWB_out
+R0
+!i10b 1
+!s100 oO^QaP?1VLoc7<S4z`I@;3
+I0P;<>TV0Bj9Za[5ADjCHg2
+R1
+R2
+w1498907558
+8WB_out.v
+FWB_out.v
+L0 1
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1
+R7
+R8
+n@w@b_out

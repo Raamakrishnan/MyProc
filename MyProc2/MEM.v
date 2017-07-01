@@ -45,6 +45,8 @@ module MEM (
 	always @(posedge clk) begin
 		rd = 0;
 		wr = 0;
+		PC_out = PC_in;
+		IR_out = IR_in;
 		case(OpCode)
 			`LW: begin
 				mode = 0;

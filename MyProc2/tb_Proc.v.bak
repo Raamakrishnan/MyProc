@@ -1,9 +1,8 @@
+`include "Proc.v"
 `timescale 1ns/100ps
 // Trace
-//`define TRACE_REG
+`define TRACE_REG
 `define TRACE_PIPELINE
-
-`include "Proc.v"
 
 module tb_Proc ();
 
@@ -24,7 +23,7 @@ module tb_Proc ();
 	end
 
 	always @(posedge halt) begin
-		$display($time ," End of sim");
+		$display($time ,"End of sim");
 		$finish;
 	end
 

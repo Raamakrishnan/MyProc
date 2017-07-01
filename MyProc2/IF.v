@@ -26,6 +26,7 @@ module IF(
 
 	always @(negedge rst_n) begin
 		PC = 0;
+		IR = Ins_in;
 	end
 
 	always @(posedge clk) begin

@@ -35,7 +35,7 @@
 module Proc (
 	input clk,    	// Clock
 	input rst_n,	// Asynchronous reset active low
-	output reg halt
+	output halt
 );
 
 	// wires for IF to IF-ID
@@ -138,10 +138,7 @@ module Proc (
 
 `ifdef TRACE_PIPELINE
 	always @(posedge clk) begin
-		$display($time, " IF IR=%h, PC=%h", IR_IF_ID1, PC_IF_ID1);
-		$display($time, " ID IR=%h, PC=%h", IR_ID_EXE1, PC_ID_EXE1);
-		$display($time, " EXE IR=%h, PC=%h", IR_EXE_MEM1, PC_EXE_MEM1);
-		$display($time, " MEM IR=%h, PC=%h", IR_MEM_WB1, PC_MEM_WB1);
+		$display($time, "IF-ID IR=%h, PC=%h", IR_IF_ID1, PC_IF_ID1);
 	end
 `endif
 

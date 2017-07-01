@@ -49,6 +49,8 @@ module EXE (
 		end
 		else begin
 			IsBranchTaken = 0;
+			IR_out = IR_in;
+			PC_out = PC_in;
 			case(OpCode)
 				`ADD, `ADDI: 	begin
 					res = X + Y;

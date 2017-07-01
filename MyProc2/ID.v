@@ -15,8 +15,8 @@ module ID (
 	input wire [`WIDTH - 3:0] PC_in,
 	
 	// pipeline out
-	output reg [`WIDTH - 1:0] IR_out,
-	output reg [`WIDTH - 3:0] PC_out,
+	output wire [`WIDTH - 1:0] IR_out,
+	output wire [`WIDTH - 3:0] PC_out,
 	output reg [`WIDTH - 1:0] X,
 	output reg [`WIDTH - 1:0] Y,
 	
@@ -50,17 +50,20 @@ module ID (
 	assign Imm = IR_in[15:0];
 	assign Tgt = IR_in[25:0];
 
-	always @(posedge clk) begin
+	assign IR_out = (IsStall === 1)?IR_out:((IsFlush === 1)?`NOP:IR_in);
+	assign PC_out = (IsStall === 1)?PC_out:((IsFlush === 1)?`NOP:PC_in);
+
+	/*always @(negedge clk) begin
 		if(IsStall) begin
 			
 		end else if(IsFlush) begin
-			IR_out <= `NOP;
+			//IR_out = `NOP;
 		end else begin
-			IR_out <= IR_in;
-			PC_out <= PC_in;
+			//IR_out = IR_in;
+			//PC_out = PC_in;
 		end
 	end
-
+*/
 	always @(posedge clk) begin
 		case(OpCode)
 			`R_TYPE: begin

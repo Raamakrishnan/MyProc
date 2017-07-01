@@ -75,23 +75,23 @@ R7
 R8
 n@e@x@e_@m@e@m
 vID
-R0
+!s110 1498944174
 !i10b 1
-!s100 WoXV:MPS:Xb;9R4W<obEk2
-IW6Xb^5azbV4A9YZBT:BA[3
+!s100 N6f[`XzH?Z:f5ZokWbP4I0
+Iz3OSMYl38g3JI`:oj6WzG1
 R1
 R2
-w1498939664
-8ID.v
-FID.v
+w1498944169
+8D:/Electronics/Verilog/MyProc/MyProc2/ID.v
+FD:/Electronics/Verilog/MyProc/MyProc2/ID.v
 L0 9
 R3
 r1
 !s85 0
 31
-R4
-R5
-R6
+!s108 1498944174.000000
+!s107 ISA.v|params.v|D:/Electronics/Verilog/MyProc/MyProc2/ID.v|
+!s90 -reportprogress|300|-work|work|-stats=none|D:/Electronics/Verilog/MyProc/MyProc2/ID.v|
 !i113 1
 R7
 R8

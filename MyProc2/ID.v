@@ -17,8 +17,8 @@ module ID (
 	// pipeline out
 	output wire [`WIDTH - 1:0] IR_out,
 	output wire [`WIDTH - 3:0] PC_out,
-	output reg [`WIDTH - 1:0] X,
-	output reg [`WIDTH - 1:0] Y,
+	output wire [`WIDTH - 1:0] X,
+	output wire [`WIDTH - 1:0] Y,
 	
 	// Reg in/out
 	output reg [`REG_ADDR_LEN - 1:0] Rd1_addr,
@@ -55,8 +55,8 @@ module ID (
 
 	assign IR_out = (IsStall === 1)?IR_out:((IsFlush === 1)?`NOP:IR_in);
 	assign PC_out = (IsStall === 1)?PC_out:((IsFlush === 1)?`NOP:PC_in);
-	//assign X = X_reg;
-	//assign Y = Y_reg;
+	assign X = (Rd1_en == 1)? Rd1_data : Tgt;
+	assign Y = (Rd2_en == 1)? Rd2_data : sext16(Imm);
 
 	/*always @(negedge clk) begin
 		if(IsStall) begin
@@ -82,12 +82,12 @@ module ID (
 			`I_TYPE, `LW, `LH, `LD: begin
 				Rd1_addr <= Rs;
 				Rd1_en <= 1;
-				Y <= sext16(Imm);
+				//Y <= sext16(Imm);
 			end
 			`Branch: begin
 				Rd1_addr <= Rd;
 				Rd1_en <= 1;
-				Y <= sext16(Imm);
+				//Y <= sext16(Imm);
 			end
 			`SD, `SH, `SW: begin
 				Rd1_addr <= Rd;
@@ -96,7 +96,7 @@ module ID (
 				Rd2_en <= 1;
 			end
 			`J_TYPE: begin
-				X <= Tgt;
+				//X <= Tgt;
 			end
 			`NOP:	begin
 				
@@ -108,13 +108,13 @@ module ID (
 	end
 
 	always @(posedge Rd1_st) begin
-		X = Rd1_data;
-		Rd1_en = 0;
+		//X = Rd1_data;
+		//Rd1_en = 0;
 	end
 
 	always @(posedge Rd2_st) begin
-		Y = Rd2_data;
-		Rd2_en = 0;
+		//Y = Rd2_data;
+		//Rd2_en = 0;
 	end
 
 	function [`WIDTH-1:0] sext16(

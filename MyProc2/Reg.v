@@ -65,7 +65,7 @@ module Reg(
 			//$write("R[%d] = ", k);
 			for(j=0;j<4;j=j+1)
 				begin
-					$write("R[%d] = %h\t", k, R[k]);
+					$write("R[%d] = %h\t", k, RegFile[k]);
 					k = k + 1;
 				end
 			$write("\n");

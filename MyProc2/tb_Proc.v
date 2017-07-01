@@ -1,6 +1,6 @@
 `timescale 1ns/100ps
 // Trace
-//`define TRACE_REG
+`define TRACE_REG
 `define TRACE_PIPELINE
 
 `include "Proc.v"
@@ -25,7 +25,7 @@ module tb_Proc ();
 
 	always @(posedge halt) begin
 		$display($time ," End of sim");
-		$finish;
+		$stop;
 	end
 
 endmodule

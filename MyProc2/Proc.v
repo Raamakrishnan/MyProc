@@ -140,7 +140,7 @@ module Proc (
 `endif
 
 	WB WB(.clk(clk), .PC_in(PC_MEM_WB2), .IR_in(IR_MEM_WB2), .Z_in(Z_MEM_WB2), // pipeline in
-		.Addr(Wt_addr), .Data(Wt_data), .wr_en(w_en), .w_mode(w_mode),	// register
+		.Addr(Wt_addr), .Data(Wt_data), .wr_en(Wt_en), .w_mode(w_mode),	// register
 		.Halt(halt_out)
 `ifdef TRACE_PIPELINE
 		,.IR_out(IR_WB_out1), .PC_out(PC_WB_out1)

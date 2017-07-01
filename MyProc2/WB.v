@@ -47,29 +47,45 @@ module WB (
 		wr_en = 0;
 		case(OpCode)
 			`LW: begin
-				Addr = Rd;
-				Data = Z_in;
+				//Addr = Rd;
+				//Data = Z_in;
+				WriteReg(Rd, Z_in, 0);
 			end
 			`LH: begin
-				w_mode = 1;
-				Addr = Rd;
-				Data = Z_in;
+				//w_mode = 1;
+				//Addr = Rd;
+				//Data = Z_in;
+				WriteReg(Rd, Z_in, 1);
 			end
 			`LD: begin
-				w_mode = 1;
-				Addr = Rd;
-				Data = Z_in;
+				//w_mode = 1;
+				//Addr = Rd;
+				//Data = Z_in;
+				WriteReg(Rd, Z_in, 1);
 			end
 			`R_TYPE, `I_TYPE: begin
-				Addr = Rd;
-				Data = Z_in;
+				//Addr = Rd;
+				//Data = Z_in;
+				WriteReg(Rd, Z_in, 0);
 			end
 			`JAL, `JALR: begin
-				Addr = 31;
-				Data = Z_in;
+				//Addr = 31;
+				//Data = Z_in;
+				WriteReg(Rd, Z_in, 0);
 			end
 			`HALT: Halt = 1;
 		endcase
 	end
+
+	task WriteReg(input [`REG_ADDR_LEN - 1:0] Addr_in,
+		input [`WIDTH - 1:0] Data_in,
+		input [1:0] w_mode_in);
+		begin
+			w_mode = w_mode_in;
+			Data = Data_in;
+			Addr = Addr_in;
+			wr_en = 1;
+		end
+	endtask
 
 endmodule

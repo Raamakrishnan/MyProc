@@ -22,7 +22,7 @@ module MEM (
 	// pipeline outputs
 	output wire [`WIDTH - 1:0] IR_out,
 	output wire [`WIDTH - 3:0] PC_out,
-	output wire [`WIDTH - 1:0] Z_out
+	output reg [`WIDTH - 1:0] Z_out
 
 );
 
@@ -38,12 +38,9 @@ module MEM (
 	wire rd_st;
 	reg [1:0] mode;
 
-	reg [`WIDTH - 1:0] Z_reg;
-
 	assign data = (data_v == 1)? data_reg : 32'hZ;
 	assign PC_out = PC_in;
 	assign IR_out = IR_in;
-	assign Z_out = (rd == 1)? data : Z_in;
 
 	DMem DMem(.add(addr), .data(data), .wr(wr), .rd(rd), .rd_st(rd_st), .mode(mode));
 
@@ -78,9 +75,9 @@ module MEM (
 		endcase
 	end
 
-	// always @(posedge rd_st) begin
-	// 	Z_reg = data;
-	// end
+	always @(posedge rd_st) begin
+		Z_out = data;
+	end
 
 	task ReadMem();
 		begin

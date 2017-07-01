@@ -92,13 +92,6 @@ Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  
 Top level modules:
 	IF_ID
 
-} {} {}} D:/Electronics/Verilog/MyProc/MyProc2/ID.v {1 {vlog -work work -stats=none D:/Electronics/Verilog/MyProc/MyProc2/ID.v
-Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
--- Compiling module ID
-
-Top level modules:
-	ID
-
 } {} {}} D:/Electronics/Verilog/MyProc/MyProc2/ISA.v {1 {vlog -work work -stats=none D:/Electronics/Verilog/MyProc/MyProc2/ISA.v
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
 
@@ -108,6 +101,14 @@ Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  
 
 Top level modules:
 	Reg
+
+} {} {}} D:/Electronics/Verilog/MyProc/MyProc2/MEM.v {1 {vlog -work work -stats=none D:/Electronics/Verilog/MyProc/MyProc2/MEM.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module DMem
+-- Compiling module MEM
+
+Top level modules:
+	MEM
 
 } {} {}} D:/Electronics/Verilog/MyProc/MyProc2/IF.v {1 {vlog -work work -stats=none D:/Electronics/Verilog/MyProc/MyProc2/IF.v
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016

@@ -42,6 +42,9 @@ module ID (
 	wire [15:0] Imm;
 	wire [25:0] Tgt;
 
+	reg [`WIDTH-1:0] X_reg;
+	reg [`WIDTH-1:0] Y_reg;
+
 	assign OpCode = IR_in[31:26];
 	assign Rd = IR_in[25:21];
 	assign Rs = IR_in[20:16];
@@ -52,6 +55,8 @@ module ID (
 
 	assign IR_out = (IsStall === 1)?IR_out:((IsFlush === 1)?`NOP:IR_in);
 	assign PC_out = (IsStall === 1)?PC_out:((IsFlush === 1)?`NOP:PC_in);
+	//assign X = X_reg;
+	//assign Y = Y_reg;
 
 	/*always @(negedge clk) begin
 		if(IsStall) begin
@@ -64,7 +69,7 @@ module ID (
 		end
 	end
 */
-	always @(posedge clk) begin
+	always @(OpCode) begin
 		case(OpCode)
 			`R_TYPE: begin
 				Rd1_addr <= Rs;

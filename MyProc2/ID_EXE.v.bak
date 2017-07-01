@@ -19,7 +19,7 @@ module ID_EXE (
 	always @(posedge clk) begin
 		IR_out <= IR_in;
 		PC_out <= PC_in;
-		X_out <= X_in;
+		X_out <= X_out;
 		Y_out <= Y_in;
 	end
 

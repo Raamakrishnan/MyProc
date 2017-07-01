@@ -9,7 +9,7 @@ z2
 cModel Technology
 dD:/Electronics/MyProcessor
 vDMem
-Z0 !s110 1498910112
+Z0 !s110 1498928875
 !i10b 1
 !s100 ddj8?5MJdSRPJ=B8k`K=N1
 IQfda97:PPMigCzP=3B;zg3
@@ -23,7 +23,7 @@ Z3 OV;L;10.5b;63
 r1
 !s85 0
 31
-Z4 !s108 1498910112.000000
+Z4 !s108 1498928875.000000
 Z5 !s107 WB_out.v|WB.v|MEM_WB.v|MEM.v|DMem.v|EXE_MEM.v|EXE.v|ID_EXE.v|ID.v|Reg.v|IF_ID.v|IF.v|IMem.v|ISA.v|params.v|Proc.v|D:/Electronics/Verilog/MyProc/MyProc2/tb_Proc.v|
 Z6 !s90 -reportprogress|300|-work|work|-stats=none|D:/Electronics/Verilog/MyProc/MyProc2/tb_Proc.v|
 !i113 1
@@ -59,7 +59,7 @@ R0
 I6BW046a4J^G@c>DYUTm[T2
 R1
 R2
-Z9 w1498577802
+w1498577802
 8EXE_MEM.v
 FEXE_MEM.v
 L0 5
@@ -77,11 +77,11 @@ n@e@x@e_@m@e@m
 vID
 R0
 !i10b 1
-!s100 HFHSXgd<SN0Lc5WoUG`=72
-Ij0?A]zBh@;G2JTdL7Dfzc1
+!s100 Z0hJjl2498m7NT@DVd[W90
+IOYozEAOgn]KX7CKzHVnPf2
 R1
 R2
-w1498905491
+w1498928418
 8ID.v
 FID.v
 L0 9
@@ -99,11 +99,11 @@ n@i@d
 vID_EXE
 R0
 !i10b 1
-!s100 Ek_SccFV64>5NSAl=7gd>2
-I8mzAX65@c3Hd6RfKW6[N@1
+!s100 7]`Y7cLB^dEjBka8Y_TaA3
+IEGUW`DnM>Ph=0QN`7@;Kf3
 R1
 R2
-R9
+w1498928635
 8ID_EXE.v
 FID_EXE.v
 L0 5

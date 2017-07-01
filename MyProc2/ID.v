@@ -69,7 +69,9 @@ module ID (
 		end
 	end
 */
-	always @(IR_in) begin
+	always @(IR_out) begin
+		Rd1_en = 0;
+		Rd2_en = 0;
 		case(OpCode)
 			`R_TYPE: begin
 				Rd1_addr <= Rs;
@@ -106,11 +108,13 @@ module ID (
 	end
 
 	always @(posedge Rd1_st) begin
-		X <= Rd1_data;
+		X = Rd1_data;
+		Rd1_en = 0;
 	end
 
 	always @(posedge Rd2_st) begin
-		Y <= Rd2_data;
+		Y = Rd2_data;
+		Rd2_en = 0;
 	end
 
 	function [`WIDTH-1:0] sext16(

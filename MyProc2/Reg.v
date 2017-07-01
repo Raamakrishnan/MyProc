@@ -8,8 +8,8 @@ module Reg(
 	input wire clk,    // Clock
 	input wire [`REG_ADDR_LEN - 1:0] ra,
 	input wire [`REG_ADDR_LEN - 1:0] rb,
-	output reg [`WIDTH - 1:0] dataA,
-	output reg [`WIDTH - 1:0] dataB,
+	output wire [`WIDTH - 1:0] dataA,
+	output wire [`WIDTH - 1:0] dataB,
 	output reg st_A,	// output strobe
 	output reg st_B,	// output strobe
 	input wire r_en_A,
@@ -21,6 +21,9 @@ module Reg(
 );
 
 	reg [`WIDTH - 1:0] RegFile [`NUM_REGS - 1:0];
+
+	assign dataA = (st_A == 1)?((ra!=0)?RegFile[ra]:0):32'bz;
+	assign dataB = (st_B == 1)?((rb!=0)?RegFile[rb]:0):32'bz;
 
 	always @(posedge clk) begin
 		if (w_en) begin
@@ -35,24 +38,26 @@ module Reg(
 	end
 
 	always @(negedge clk) begin
-		if (r_en_A) begin
 			st_A = 0;
-			if(ra != 0)
-				dataA = RegFile[ra];
-			else 
-				dataA = 'd0;
+		if (r_en_A) begin
+			// if(ra != 0)
+			// 	dataA = RegFile[ra];
+			// else 
+			// 	dataA = 'd0;
 			st_A = 1;
+			//st_A = 0;
 		end
 	end
 
 	always @(negedge clk) begin
-		if (r_en_B) begin
 			st_B = 0;
-			if(rb != 0)
-				dataB = RegFile[rb];
-			else 
-				dataB = 'd0;
+		if (r_en_B) begin
+			// if(rb != 0)
+			// 	dataB = RegFile[rb];
+			// else 
+			// 	dataB = 'd0;
 			st_B = 1;
+			//st_B = 0;
 		end
 	end
 

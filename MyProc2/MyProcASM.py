@@ -139,7 +139,7 @@ def main(argv):
         elif op in insRDict:
             # print(insRDict[op])
             inBin |= insRDict[op] << 26
-            if op != "HALT":
+            if op != "HALT" and op!="NOP":
                 r = ins[1].strip()
                 ope = r.split(",")
                 if len(ope) > 3:

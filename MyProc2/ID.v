@@ -69,7 +69,7 @@ module ID (
 		end
 	end
 */
-	always @(OpCode) begin
+	always @(IR_in) begin
 		case(OpCode)
 			`R_TYPE: begin
 				Rd1_addr <= Rs;

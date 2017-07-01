@@ -41,7 +41,7 @@ module WB (
 	assign PC_out = PC_in;
 `endif
 
-	always @(posedge clk) begin
+	always @(IR_in) begin
 		Halt = 0;
 		w_mode = 0;
 		wr_en = 0;
@@ -73,8 +73,13 @@ module WB (
 				//Data = Z_in;
 				WriteReg(Rd, Z_in, 0);
 			end
-			`HALT: Halt = 1;
+			//`HALT: Halt = 1;
 		endcase
+	end
+
+	always @(posedge clk) begin
+		if(OpCode == `HALT)
+			Halt = 1;
 	end
 
 	task WriteReg(input [`REG_ADDR_LEN - 1:0] Addr_in,

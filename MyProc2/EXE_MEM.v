@@ -21,7 +21,7 @@ module EXE_MEM (
 	always @(posedge clk) begin
 		IR_out <= IR_in;
 		PC_out <= PC_in;
-		Z_out <= Z_out;
+		Z_out <= Z_in;
 		Addr_out <= Addr_in;
 	end
 

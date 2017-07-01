@@ -71,7 +71,7 @@ module Proc (
 
 	Reg Reg(.clk(clk), .ra(Rd1_addr), .dataA(Rd1_data), .r_en_A(Rd1_en), .st_A(Rd1_st),
 		.rb(Rd2_addr), .dataB(Rd2_data), .r_en_B(Rd2_en), .st_B(Rd2_st),
-		.rc(Wt_addr), .dataC(Wt_data), .w_en(Wt_en));
+		.rc(Wt_addr), .dataC(Wt_data), .w_en(Wt_en), .w_mode(w_mode));
 
 	// wires for ID to ID-EXE
 	wire [`WIDTH - 3:0] PC_ID_EXE1;
@@ -143,7 +143,7 @@ module Proc (
 		.Addr(Wt_addr), .Data(Wt_data), .wr_en(Wt_en), .w_mode(w_mode),	// register
 		.Halt(halt_out)
 `ifdef TRACE_PIPELINE
-		,.IR_out(IR_WB_out1), .PC_out(PC_WB_out1)
+		,.IR_out(IR_WB_OUT1), .PC_out(PC_WB_OUT1)
 `endif
 		);
 

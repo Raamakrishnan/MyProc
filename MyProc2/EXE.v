@@ -46,7 +46,7 @@ module EXE (
 
 	reg [`WIDTH:0] res;
 
-	always @(posedge clk) begin
+	always @(IR_in) begin
 		if (IsStall) begin
 			
 		end

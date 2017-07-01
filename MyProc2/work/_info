@@ -9,7 +9,7 @@ z2
 cModel Technology
 dD:/Electronics/MyProcessor
 vDMem
-Z0 !s110 1498928875
+Z0 !s110 1498931589
 !i10b 1
 !s100 ddj8?5MJdSRPJ=B8k`K=N1
 IQfda97:PPMigCzP=3B;zg3
@@ -23,7 +23,7 @@ Z3 OV;L;10.5b;63
 r1
 !s85 0
 31
-Z4 !s108 1498928875.000000
+Z4 !s108 1498931589.000000
 Z5 !s107 WB_out.v|WB.v|MEM_WB.v|MEM.v|DMem.v|EXE_MEM.v|EXE.v|ID_EXE.v|ID.v|Reg.v|IF_ID.v|IF.v|IMem.v|ISA.v|params.v|Proc.v|D:/Electronics/Verilog/MyProc/MyProc2/tb_Proc.v|
 Z6 !s90 -reportprogress|300|-work|work|-stats=none|D:/Electronics/Verilog/MyProc/MyProc2/tb_Proc.v|
 !i113 1
@@ -33,11 +33,11 @@ n@d@mem
 vEXE
 R0
 !i10b 1
-!s100 SXG3<ORi1@fTzIbBT`W4F1
-IRKXOkTc5`5Qb9C>FAze@G1
+!s100 QP7YW_e5BZ18JT24<S[CF0
+IB`5M<UjYCGfz5:fS9`Ko03
 R1
 R2
-w1498907928
+w1498930250
 8EXE.v
 FEXE.v
 L0 9
@@ -55,11 +55,11 @@ n@e@x@e
 vEXE_MEM
 R0
 !i10b 1
-!s100 91>llFV>RRzKVLXK@PXK[2
-I6BW046a4J^G@c>DYUTm[T2
+!s100 Wf4caCW20JaNm?b0^SzH>0
+ID62NT7RY1RKnb4V7f31Fi0
 R1
 R2
-w1498577802
+w1498930890
 8EXE_MEM.v
 FEXE_MEM.v
 L0 5
@@ -77,11 +77,11 @@ n@e@x@e_@m@e@m
 vID
 R0
 !i10b 1
-!s100 Z0hJjl2498m7NT@DVd[W90
-IOYozEAOgn]KX7CKzHVnPf2
+!s100 83Q69C<C8>1AO]CPS?jFO1
+I^:_6<3D215lP@ceXk2GXT3
 R1
 R2
-w1498928418
+w1498930243
 8ID.v
 FID.v
 L0 9
@@ -231,11 +231,11 @@ n@m@e@m_@w@b
 vProc
 R0
 !i10b 1
-!s100 jZmlT>]925hL1@BbCmTnh1
-IAU5Z<EcHF9l:0c4g6R5[;3
+!s100 IdoC8]:lZ?cf1EFR<LaVN1
+IHcYZBTId1I8YkA?=T@dC>2
 R1
 R2
-w1498908627
+w1498931554
 8Proc.v
 FProc.v
 L0 37
@@ -297,11 +297,11 @@ ntb_@proc
 vWB
 R0
 !i10b 1
-!s100 hd>DE]EjO9K]Q7fYTBIz02
-I]zRSiFkVSe]Bn[<I;lSlo3
+!s100 F9Rol@S<Of1g1z:X_OK_N0
+Icm@gDOFWi_0nGLCK^42IJ1
 R1
 R2
-w1498909698
+w1498931240
 8WB.v
 FWB.v
 L0 9

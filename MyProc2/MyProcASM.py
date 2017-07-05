@@ -124,15 +124,15 @@ def main(argv):
                         break
                 elif isNumber(ope[i]):
                     no = int(ope[i])
-                    if i == 1 or i == 2:
-                        inBin |= ((no % (1 << 16)) & 0xFFFF)
+                    # if i == 1 or i == 2:
+                    inBin |= ((no % (1 << 16)) & 0xFFFF)
                         # if no.bit_length() <= 16:
                         # else:
                         #     print("Immediate value should be a max of 16 bits at Line: ", lc)
 
-                    else:
-                        print("Invalid Immediate value at Line: ", lc)
-                        break
+                    # else:
+                        # print("Invalid Immediate value at Line: ", lc)
+                        # break
             outToFile(printFormat(inBin), hexFile)
 
         # R Type
@@ -175,7 +175,7 @@ def main(argv):
             if imm in labelDict:
                 no = labelDict[imm]
                 if no.bit_length() <= 26:
-                    inBin |= (no * 4);
+                    inBin |= no;
                     # print(no)
                 else:
                     print("Label Target value should be a max of 26 bits at Line: ", lc)

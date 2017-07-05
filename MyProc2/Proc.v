@@ -48,7 +48,11 @@ module Proc (
 	wire [`WIDTH - 1:0] IR_IF_ID2;
 	wire [`WIDTH - 3:0] PC_IF_ID2;
 
-	IF IF(.clk(clk), .rst_n(rst_n), .IR(IR_IF_ID1), .PC(PC_IF_ID1));
+	// wires for IF
+	wire IsBranch;
+	wire [`WIDTH - 3:0] BranchAddr;
+
+	IF IF(.clk(clk), .rst_n(rst_n), .IR(IR_IF_ID1), .PC(PC_IF_ID1), .IsBranch(IsBranch), .BranchAddr(BranchAddr));
 
 	IF_ID IF_ID(.clk(clk), .IR_in(IR_IF_ID1), .PC_in(PC_IF_ID1), 
 		.IR_out(IR_IF_ID2), .PC_out(PC_IF_ID2));
@@ -88,7 +92,8 @@ module Proc (
 	ID ID(.clk(clk), .PC_in(PC_IF_ID2), .IR_in(IR_IF_ID2), 								// pipeline in
 		.Rd1_addr(Rd1_addr), .Rd1_data(Rd1_data), .Rd1_en(Rd1_en), .Rd1_st(Rd1_st),		// register ports
 		.Rd2_addr(Rd2_addr), .Rd2_data(Rd2_data), .Rd2_en(Rd2_en), .Rd2_st(Rd2_st),
-		.PC_out(PC_ID_EXE1), .IR_out(IR_ID_EXE1), .X(X_ID_EXE1), .Y(Y_ID_EXE1));		// pipeline out
+		.PC_out(PC_ID_EXE1), .IR_out(IR_ID_EXE1), .X(X_ID_EXE1), .Y(Y_ID_EXE1),
+		.IsFlush(IsBranch));		// pipeline out
 
 	ID_EXE ID_EXE(.clk(clk), .PC_in(PC_ID_EXE1), .IR_in(IR_ID_EXE1), .X_in(X_ID_EXE1), .Y_in(Y_ID_EXE1),	//pipeline in
 		.PC_out(PC_ID_EXE2), .IR_out(IR_ID_EXE2), .X_out(X_ID_EXE2), .Y_out(Y_ID_EXE2));	// pipeline out
@@ -106,8 +111,8 @@ module Proc (
 	wire [`WIDTH - 1:0] Addr_EXE_MEM2;	
 
 	EXE EXE(.clk(clk), .PC_in(PC_ID_EXE2), .IR_in(IR_ID_EXE2), .X(X_ID_EXE2), .Y(Y_ID_EXE2), 	// pipeline in
-		.PC_out(PC_EXE_MEM1), .IR_out(IR_EXE_MEM1), .Z(Z_EXE_MEM1), .Addr(Addr_EXE_MEM1) 		// pipeline out
-		);
+		.PC_out(PC_EXE_MEM1), .IR_out(IR_EXE_MEM1), .Z(Z_EXE_MEM1), .Addr(Addr_EXE_MEM1), 		// pipeline out
+		.IsBranch(IsBranch), .BranchAddr(BranchAddr));
 
 	EXE_MEM EXE_MEM(.clk(clk), .PC_in(PC_EXE_MEM1), .IR_in(IR_EXE_MEM1), .Z_in(Z_EXE_MEM1), .Addr_in(Addr_EXE_MEM1), // pipeline in
 		.PC_out(PC_EXE_MEM2), .IR_out(IR_EXE_MEM2), .Z_out(Z_EXE_MEM2), .Addr_out(Addr_EXE_MEM2));	// pipeline in

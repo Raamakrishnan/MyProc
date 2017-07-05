@@ -69,7 +69,7 @@ module ID (
 		end
 	end
 */
-	always @(IR_out) begin
+	always @(IR_out or PC_out) begin
 		Rd1_en = 0;
 		Rd2_en = 0;
 		case(OpCode)

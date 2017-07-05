@@ -22,7 +22,7 @@ module EXE (
 	output reg [`WIDTH - 1:0] Addr,
 
 	input wire IsStall,
-	output reg IsBranchTaken,
+	output wire IsBranch,
 	output reg [`WIDTH - 3:0] BranchAddr,
 	
 	//conditions
@@ -35,6 +35,7 @@ module EXE (
 	wire [5:0] OpCode;
 	wire [4:0] Shamt;
 	wire [15:0] Imm;
+	reg IsBranch_reg;
 	
 	assign OpCode = IR_in[31:26];
 	assign Shamt = IR_in[10:6];
@@ -43,6 +44,7 @@ module EXE (
 
 	assign IR_out = (IsStall === 1)?IR_out:IR_in;
 	assign PC_out = (IsStall === 1)?PC_out:PC_in;
+	assign IsBranch = (IsBranch_reg == 1)?1:0; 
 
 	reg [`WIDTH:0] res;
 
@@ -51,12 +53,12 @@ module EXE (
 			
 		end
 		else begin
-			IsBranchTaken = 0;
+			IsBranch_reg = 0;
 			//IR_out = IR_in;
 			//PC_out = PC_in;
 			case(OpCode)
 				`ADD, `ADDI: 	begin
-					res = X + Y;
+					res = $signed(X + Y);
 					Z = res;
 					setc(X, Y, res, 0);
 				end
@@ -127,27 +129,27 @@ module EXE (
 				// Branches
 				`BEQ: begin
 					if(X == 0)
-						BranchTaken(PC_in + (Y << 2));
+						BranchTaken(PC_in + $signed(Y));
 				end
 				`BNE: begin
 					if(X != 0)
-						BranchTaken(PC_in + (Y << 2));
+						BranchTaken(PC_in + $signed(Y));
 				end
 				`BGTZ: begin
 					if($signed(X) > 0)
-						BranchTaken(PC_in + (Y << 2));
+						BranchTaken(PC_in + $signed(Y));
 				end
 				`BLTZ: begin
 					if($signed(X) < 0)
-						BranchTaken(PC_in + (Y << 2));
+						BranchTaken(PC_in + $signed(Y));
 				end
 				`BLEZ: begin
 					if($signed(X) <= 0)
-						BranchTaken(PC_in + (Y << 2));
+						BranchTaken(PC_in + $signed(Y));
 				end
 				`BGEZ: begin
 					if($signed(X) >= 0)
-						BranchTaken(PC_in + (Y << 2));
+						BranchTaken(PC_in + $signed(Y));
 				end
 
 				//J Type
@@ -159,7 +161,7 @@ module EXE (
 					Z = X;
 				end
 				`JR: begin
-					BranchTaken(X + Y);
+					BranchTaken($signed(PC_in + Y));
 				end
 				`JALR: begin
 					Z = X + Y;
@@ -179,7 +181,7 @@ module EXE (
 
 	task BranchTaken(input [`WIDTH-1:0] addr);
 		begin
-			IsBranchTaken = 1;
+			IsBranch_reg = 1;
 			BranchAddr = addr;
 		end
 	endtask

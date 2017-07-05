@@ -1,7 +1,10 @@
-ORI r1, r0, 1
-ori r2, r0, 2
+ORI r1, r0, 5
 nop
 nop
 nop
-add r3, r2, r1
+addi r1, r1, -1
+nop
+nop
+nop
+bne r1, -4
 HALT

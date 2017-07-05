@@ -24,6 +24,10 @@ module MEM (
 	output wire [`WIDTH - 3:0] PC_out,
 	output wire [`WIDTH - 1:0] Z_out
 
+	// mem trace
+`ifdef TRACE_MEM
+	,input wire Print
+`endif
 );
 
 	wire [5:0] OpCode;
@@ -45,9 +49,13 @@ module MEM (
 	assign IR_out = IR_in;
 	assign Z_out = (rd == 1)? data : Z_in;
 
-	DMem DMem(.add(addr), .data(data), .wr(wr), .rd(rd), .rd_st(rd_st), .mode(mode));
+	DMem DMem(.add(addr), .data(data), .wr(wr), .rd(rd), .rd_st(rd_st), .mode(mode)
+`ifdef TRACE_MEM
+	, .Print(Print)
+`endif
+	);
 
-	always @(posedge clk) begin
+	always @(IR_in or PC_in) begin
 		rd = 0;
 		wr = 0;
 		case(OpCode)
@@ -97,5 +105,6 @@ module MEM (
 			wr = 1;
 		end
 	endtask
+
 
 endmodule

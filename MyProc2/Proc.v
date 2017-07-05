@@ -38,6 +38,9 @@ module Proc (
 	input clk,    	// Clock
 	input rst_n,	// Asynchronous reset active low
 	output reg halt
+`ifdef TRACE_MEM
+	,input wire Print
+`endif
 );
 
 	// wires for IF to IF-ID
@@ -125,10 +128,14 @@ module Proc (
 	// wires for MEM to MEM-WB
 	wire [`WIDTH - 3:0] PC_MEM_WB2;
 	wire [`WIDTH - 1:0] IR_MEM_WB2;
-	wire [`WIDTH - 1:0] Z_MEM_WB2;	
+	wire [`WIDTH - 1:0] Z_MEM_WB2;
 
 	MEM MEM(.clk(clk), .PC_in(PC_EXE_MEM2), .IR_in(IR_EXE_MEM2), .Z_in(Z_EXE_MEM2), .Addr(Addr_EXE_MEM2), // pipeline in
-		.PC_out(PC_MEM_WB1), .IR_out(IR_MEM_WB1), .Z_out(Z_MEM_WB1)); 	// pipeline out
+		.PC_out(PC_MEM_WB1), .IR_out(IR_MEM_WB1), .Z_out(Z_MEM_WB1)		// pipeline out
+`ifdef TRACE_MEM
+		,.Print(Print)
+`endif
+	);
 
 	MEM_WB MEM_WB(.clk(clk), .PC_in(PC_MEM_WB1), .IR_in(IR_MEM_WB1), .Z_in(Z_MEM_WB1), // pipeline in
 		.PC_out(PC_MEM_WB2), .IR_out(IR_MEM_WB2), .Z_out(Z_MEM_WB2));

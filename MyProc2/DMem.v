@@ -10,12 +10,16 @@ module DMem(
 	input wire rd,
 	output reg rd_st,
 	input wire [1:0] mode //mode: 0-word, 1-halfword, 2-byte
+	// mem trace
+`ifdef TRACE_MEM
+	,input wire Print
+`endif
 );
 
-	reg [7:0] mem [`WIDTH - 1:0];
+	reg [7:0] mem [0:`WIDTH - 1];
 	reg [`WIDTH - 1:0] data_r;
 
-	assign data = data_r;
+	assign data = (rd_st === 1)? data_r : 32'bZ;
 
 	always @(posedge wr) begin
 		case (mode)
@@ -47,4 +51,9 @@ module DMem(
 		rd_st = 1;
 	end
 
+`ifdef TRACE_MEM
+	always @(posedge Print) begin
+		$writememh("data.hex", mem, 0, 20);
+	end
+`endif
 endmodule

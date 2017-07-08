@@ -1,0 +1,32 @@
+D:/Electronics/Verilog/MyProc/MyProc2/params.v {1 {vlog -work work -stats=none D:/Electronics/Verilog/MyProc/MyProc2/params.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+
+} {} {}} D:/Electronics/Verilog/MyProc/MyProc2/ID_EXE.v {1 {vlog -work work -stats=none D:/Electronics/Verilog/MyProc/MyProc2/ID_EXE.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module ID_EXE
+
+Top level modules:
+	ID_EXE
+
+} {} {}} D:/Electronics/Verilog/MyProc/MyProc2/MEM_WB.v {1 {vlog -work work -stats=none D:/Electronics/Verilog/MyProc/MyProc2/MEM_WB.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module MEM_WB
+
+Top level modules:
+	MEM_WB
+
+} {} {}} D:/Electronics/Verilog/MyProc/MyProc2/EXE_MEM.v {1 {vlog -work work -stats=none D:/Electronics/Verilog/MyProc/MyProc2/EXE_MEM.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module EXE_MEM
+
+Top level modules:
+	EXE_MEM
+
+} {} {}} D:/Electronics/Verilog/MyProc/MyProc2/IF_ID.v {1 {vlog -work work -stats=none D:/Electronics/Verilog/MyProc/MyProc2/IF_ID.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module IF_ID
+
+Top level modules:
+	IF_ID
+
+} {} {}}

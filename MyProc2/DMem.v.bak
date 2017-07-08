@@ -20,7 +20,7 @@ module DMem(
 	reg [7:0] mem [0:`WIDTH - 1];
 	reg [`WIDTH - 1:0] data_r;
 
-	assign data = (rd == 1)? data_r : 32'bZ;
+	assign data = (rd_st == 1)? data_r : 32'bZ;
 
 	always @(posedge wr) begin
 		case (mode)

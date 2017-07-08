@@ -130,7 +130,7 @@ module Proc (
 	wire [`WIDTH - 1:0] IR_MEM_WB2;
 	wire [`WIDTH - 1:0] Z_MEM_WB2;
 
-	MEM MEM(.clk(clk), .PC_in(PC_EXE_MEM2), .IR_in(IR_EXE_MEM2), .Z_in(Z_EXE_MEM2), .Addr(Addr_EXE_MEM2), // pipeline in
+	MEM MEM(.clk(clk), .rst_n(rst_n), .PC_in(PC_EXE_MEM2), .IR_in(IR_EXE_MEM2), .Z_in(Z_EXE_MEM2), .Addr(Addr_EXE_MEM2), // pipeline in
 		.PC_out(PC_MEM_WB1), .IR_out(IR_MEM_WB1), .Z_out(Z_MEM_WB1)		// pipeline out
 `ifdef TRACE_MEM
 		,.Print(Print)

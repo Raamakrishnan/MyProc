@@ -1,6 +1,2 @@
-ori r1, r0, 1
-nop
-nop
-nop
-sw r1, r0 , 0
+lw r1, r0, 0
 HALT

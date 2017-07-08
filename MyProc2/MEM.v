@@ -11,8 +11,9 @@
 `endif
 
 module MEM (
-	input wire clk,    // Clock
-	
+	input wire clk,    	// Clock
+	input wire rst_n,		// reset
+
 	// pipeline inputs
 	input wire [`WIDTH - 1:0] IR_in,
 	input wire [`WIDTH - 3:0] PC_in,
@@ -47,9 +48,9 @@ module MEM (
 	assign data = (data_v == 1)? data_reg : 32'hZ;
 	assign PC_out = PC_in;
 	assign IR_out = IR_in;
-	assign Z_out = (rd == 1)? data : Z_in;
+	assign Z_out = (rd_st == 1)? data : Z_in;
 
-	DMem DMem(.add(addr), .data(data), .wr(wr), .rd(rd), .rd_st(rd_st), .mode(mode)
+	DMem DMem(.rst_n(rst_n), .add(addr), .data(data), .wr(wr), .rd(rd), .rd_st(rd_st), .mode(mode)
 `ifdef TRACE_MEM
 	, .Print(Print)
 `endif
@@ -58,6 +59,7 @@ module MEM (
 	always @(IR_in or PC_in) begin
 		rd = 0;
 		wr = 0;
+		data_v = 0;
 		case(OpCode)
 			`LW: begin
 				mode = 0;

@@ -1,4 +1,11 @@
-D:/Electronics/Verilog/MyProc/MyProc2/Proc.v {1 {vlog -work work -stats=none D:/Electronics/Verilog/MyProc/MyProc2/Proc.v
+D:/Electronics/Verilog/MyProc/MyProc2/DMem.v {1 {vlog -work work -stats=none D:/Electronics/Verilog/MyProc/MyProc2/DMem.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module DMem
+
+Top level modules:
+	DMem
+
+} {} {}} D:/Electronics/Verilog/MyProc/MyProc2/Proc.v {1 {vlog -work work -stats=none D:/Electronics/Verilog/MyProc/MyProc2/Proc.v
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
 -- Compiling module IMem
 -- Compiling module IF
@@ -101,14 +108,6 @@ Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  
 
 Top level modules:
 	Reg
-
-} {} {}} D:/Electronics/Verilog/MyProc/MyProc2/MEM.v {1 {vlog -work work -stats=none D:/Electronics/Verilog/MyProc/MyProc2/MEM.v
-Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
--- Compiling module DMem
--- Compiling module MEM
-
-Top level modules:
-	MEM
 
 } {} {}} D:/Electronics/Verilog/MyProc/MyProc2/IF.v {1 {vlog -work work -stats=none D:/Electronics/Verilog/MyProc/MyProc2/IF.v
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016

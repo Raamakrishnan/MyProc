@@ -6,32 +6,41 @@
 	`include "IMem.v"
 `endif
 
-module IF_mod(
+module IF(
 	input wire clk,    	// Clock
 	input wire rst_n,
-	//input wire [`WIDTH - 1:0] data,	// instruction
-	//output reg [`WIDTH - 3:0] addr, // last 2 bits are always 0 for aligned memory access
+	
+	// pipeline output
+	output wire [`WIDTH - 3:0] PC, // Program Counter
+	output wire [`WIDTH - 1:0] IR, // instruction
+
 	input wire IsStall,
 	input wire IsBranch,
 	input wire [`WIDTH - 3:0] BranchAddr
 	);
 
-	reg [`WIDTH - 3:0] PC;	// Program Counter
-	wire [`WIDTH - 1:0] Ins;
-	reg [`WIDTH - 1:0] Ins_reg;
-	IMem_mod IMem(.rst_n(rst_n), .data(Ins), .add(PC));
+	reg [`WIDTH - 3:0] PC_reg;	
+	wire [`WIDTH - 1:0] Ins_in;
+	//reg [`WIDTH - 1:0] Ins_reg;
+	IMem IMem(.rst_n(rst_n), .data(Ins_in), .add(PC));
 
-	always @(posedge clk or negedge rst_n) begin
-		if(~rst_n) begin
-			PC = 0;
-		end else if(IsStall) begin
+	assign PC = (IsBranch === 1)? BranchAddr : PC_reg;
+	assign IR = (IsBranch === 1)? 32'b0 : Ins_in;
+
+	always @(negedge rst_n) begin
+		PC_reg = 0;
+		//IR = Ins_in;
+	end
+
+	always @(posedge clk) begin
+		if(IsStall === 1) begin
 			 
-		end else if(IsBranch) begin
-			PC = BranchAddr;
-			Ins_reg = Ins;
+		end else if(IsBranch === 1) begin
+			PC_reg = BranchAddr;
+		//	IR = Ins_in;
 		end else begin
-			PC += 4;
-			Ins_reg = Ins;
+			PC_reg = PC_reg + 1;
+		//	IR = Ins_in;
 		end
 	end
 endmodule

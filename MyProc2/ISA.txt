@@ -11,10 +11,11 @@ Changes in MyProc2:
 -------------------
  - Number of registes = 32
  - R0 = 0 always
- - instruction memory access is aligned
+ - Instruction/Data memory access is aligned
  - Instruction encoding changes
  - OpCode Changes for HALT
- 
+ - Removed MOV, SWAP
+ - Definition of BEQ, BNE changed
 
 32-bit wide Instruction Set
 
@@ -46,8 +47,8 @@ SRLV rd, rt, rs 		10		rd=(unsiged)rt>>rs
 
 SLT	rd, rs, rt 			23		rd=1 if rs < rt
 
-MOV rd, rs 				34		rd=rs
-SWAP rd, rs 			35		swap rd and rs
+// MOV rd, rs			34		rd=rs
+// SWAP rd, rs 			35		swap rd and rs
 
 I Type
 
@@ -64,8 +65,8 @@ SW	rd, rs, const		20		[rs + const]=rd
 SH	rd, rs, const		21		[rs + const]=rd(lower 2 bytes)
 SD	rd, rs, const		22		[rs + const]=rd(lower 1 bytes)
 
-BEQ rd, rs, offset		24		branch to PC+1+offset if rd = rs
-BNE rd, rs, offset		25		branch to PC+1+offset if rd != rs
+BEQ rd, offset			24		branch to PC+1+offset if rd = 0
+BNE rd, offset			25		branch to PC+1+offset if rd != 0
 BGTZ rd, offset			26		branch to PC+1+offset if rd > 0
 BLTZ rd, offset			27		branch to PC+1+offset if rd < 0
 BGEZ rd, offset			28		branch to PC+1+offset if rd >= 0

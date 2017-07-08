@@ -4,25 +4,63 @@
 
 //Data Memory
 module DMem(
-	input wire clk,
+	input wire rst_n,
 	input wire [`WIDTH - 1:0] add,
-	inout wire [7:0] data,
-	input wire en,
-	input wire wr_rd_n);
+	inout wire [`WIDTH - 1:0] data,
+	input wire wr,
+	input wire rd,
+	output reg rd_st,
+	input wire [1:0] mode //mode: 0-word, 1-halfword, 2-byte
+	// mem trace
+`ifdef TRACE_MEM
+	,input wire Print
+`endif
+);
 
-	reg [7:0] mem [`WIDTH - 1:0];
-	reg [7:0] data_r;
+	reg [7:0] mem [0:`WIDTH - 1];
+	reg [`WIDTH - 1:0] data_r;
 
-	assign data = data_r;
+	assign data = (rd == 1)? data_r : 32'bZ;
 
-	always @(posedge clk) begin
-		if (en) begin
-			if(wr_rd_n) begin
-				mem[add] <= data;
+	always @(posedge wr) begin
+		case (mode)
+			0: begin // word
+				{mem[add], mem[add+1], mem[add+2], mem[add+3]} = data;
 			end
-			else begin
-				data_r <= mem[add];
+			1: begin // half-word
+				{mem[add], mem[add+1]} = data[15:0];
 			end
-		end
+			2: begin // byte
+				mem[add] = data[7:0];
+			end
+		endcase
 	end
+
+	always @(posedge rd) begin
+		rd_st = 0;
+		case (mode)
+			0: begin // word
+				data_r = {mem[add], mem[add+1], mem[add+2], mem[add+3]};
+				rd_st = 1;
+			end
+			1: begin // half-word
+				data_r = {16'b0 ,mem[add], mem[add+1]};
+				rd_st = 1;
+			end
+			2: begin // byte
+				data_r = {24'b0, mem[add]};
+				rd_st = 1;
+			end
+		endcase
+	end
+
+	always @(negedge rst_n) begin
+		$readmemh("data.hex", mem, 0, 20);
+	end
+
+`ifdef TRACE_MEM
+	always @(posedge Print) begin
+		$writememh("data.hex", mem, 0, 20);
+	end
+`endif
 endmodule

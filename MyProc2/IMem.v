@@ -3,7 +3,7 @@
 `endif
 
 // Data Memory
-module IMem_mod(
+module IMem(
 	input wire rst_n,
 	input wire [`WIDTH - 3:0] add, // last 2 bits are always 0 for aligned memory access
 	output reg [`WIDTH - 1:0] data
@@ -16,11 +16,11 @@ module IMem_mod(
 		$readmemh("d", mem, 0, 71);
 	end
 
-	reg exten_add;
+	reg [`WIDTH - 1:0] exten_add;
 
-	always @(*) begin
+	always @(add) begin
 		// extend last 2 bits of address
 		exten_add = {add, 1'b0, 1'b0};
-		data <= {mem[exten_add], mem[exten_add], mem[exten_add], mem[exten_add]};
+		data <= {mem[exten_add], mem[exten_add+1], mem[exten_add+2], mem[exten_add+3]};
 	end
 endmodule

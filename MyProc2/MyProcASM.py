@@ -22,14 +22,14 @@ def main(argv):
     try:
         opts, args = getopt.getopt(argv, "hi:o:", ["ifile=", "ofile="])
     except getopt.GetoptError:
-        print('test.py -i <inputfile> -o <outputfile>')
+        print('MyProcASM.py -i <inputfile> -o <outputfile>')
         sys.exit(2)
     for opt, arg in opts:
         if opt == '-h':
-            print('test.py -i|--ifile <inputfile> -o|--ofile <outputfile>')
+            print('MyProcASM.py -i|--ifile <inputfile> -o|--ofile <outputfile>')
             print('v2.0 - for MyProc2 - refer ISA')
             print('''\n A few points: \n
-                * Immediate should be a max of 16 bits. Higher bits are silently truncated
+* Immediate should be a max of 16 bits. Higher bits are silently truncated
 * Targets should be a max of 26 bits (even Labels). Higher bits are silently trucated\n''')
             sys.exit()
         elif opt in ("-i", "--ifile"):

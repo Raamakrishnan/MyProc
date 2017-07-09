@@ -19,7 +19,7 @@ This is the first version of the processor. It is a single cycle implementation.
 
 ## MyProc2
 
-The second version is a canonical 5 stage pipelined processor.
+The second version is a canonical 5 stage pipelined processor. This is currently under development in "MyProc2" branch.
 
 ### Known Issues
 * Hazard detection not implemented yet. NOPs should be inserted as and when needed by the programmer

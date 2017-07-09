@@ -1,6 +1,7 @@
 # ModelSim temporary files #
 ############################
 _*
+*.cr.mti
 
 # Compiled soure #
 ##################

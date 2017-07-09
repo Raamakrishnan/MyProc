@@ -1,6 +1,8 @@
 # MyProc
 
-MyProc is an educational project to create a microprocessor in Verilog. MyProc ISA is inspired from many ISAs, especially from MIPS ISA.
+*The ultimate aim of every Computer Architect is to design a complete processor on his own.*
+
+MyProc is how I achieve my aim. It is an educational project to create a microprocessor in Verilog. MyProc ISA is inspired from many ISAs, especially from MIPS ISA.
 
 ## Instructions
 * Each MyProc folder contains an `ISA.txt` with all the details about the ISA used in that version of MyProc
@@ -25,3 +27,7 @@ The second version is a canonical 5 stage pipelined processor.
 ## Tools Used
 * ModelSim
 * IVerilog
+
+## References
+* *Designing Digital Computer Systems with Verilog* by David Lilja and Sachin Sapatnekar
+* *Copmuter Architecture - A Quantitative Approach* by David Patterson and John L. Hennessy

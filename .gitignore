@@ -1,3 +1,7 @@
+# ModelSim temporary files #
+############################
+_*
+
 # Compiled soure #
 ##################
 *.out

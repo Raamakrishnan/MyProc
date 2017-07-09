@@ -11,6 +11,7 @@ MyProc is how I achieve my aim. It is an educational project to create a micropr
 * Use the `MyProcASM.py` present in that particular MyProc folder for proper assembling of instructions.
 * To use `MyProcASM.py`, run `python MyProcASM.py -i <inputfile> -o <outputfile>`
 * Run `python MyProcASM.py -h` for further help and some fine points
+* Use compiler directives starting with `TRACE_` to get trace outputs from the processor. Checkout `tb_MyProc.v` to know about the compiler directives and sample testbench for the processor.
 
 ## MyProc1
 

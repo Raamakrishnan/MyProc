@@ -3,7 +3,7 @@ v2.0 - for MyProc2
 
 inspired from MIPS, x86 ISA
 
-Sixteen 32-bit registers = R0 - R15
+Thirty two 32-bit registers = R0 - R31
 
 R31 has return address
 
